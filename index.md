@@ -1,36 +1,40 @@
 ---
-title: Introduction to Care Connect API
+title: Introduction to Visitors and Migrants API
 keywords: homepage
 tags: [overview]
 sidebar: overview_sidebar
 permalink: index.html
 toc: false
-summary: A brief introduction to getting started with the Care Connect FHIR&reg; APIs.
+summary: A brief introduction to getting started with the FHIR&reg; APIs.
 ---
 
-{% include important.html content="This site is under active development by NHS Digital on behalf of INTEROPen and is intended to provide all the technical resources you need to successfully develop the Care Connect APIs. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital on behalf of INTEROPen and is intended to provide all the technical resources you need to successfully develop the APIs. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
-{% include warning.html content="This site is provided for information only and is intended for those engaged with NHS Digital and INTEROPen on the development of  the Care Connect APIs. It is advised not to develop against these specifications until a formal announcement has been made." %}
+{% include warning.html content="This site is provided for information only and is intended for those engaged with NHS Digital and INTEROPen on the development of the APIs. It is advised not to develop against these specifications until a formal announcement has been made." %}
 
 # Introduction #
+Visitors and Migrants aims to support the Department of Health (DoH) Cost Recovery program for secondary care treatment provided to patients that are not eligible to receive free NHS care.
 
-The Care Connect RESTful APIs within this site have been developed collaboratively by NHS Digital and the INTEROPen community. These APIs aim to  better support the delivery of care by opening up information and data held across different clinical care settings through the use of nationally defined INTEROPen FHIR® resources.
+In 2013 a public consultation on the existing charging arrangements for overseas visitors and migrants was launched by the DoH. As a result of this consultation changes have been introduced to determine how overseas visitors and migrants are identified and charged for their healthcare.
 
-The INTEROPen vision is to create a library of nationally defined HL7® FHIR® resources and interaction patterns that implementers can adopt to simplify integration and interoperability within UK health and social care.
+Furthermore, an Immigration Health Surcharge (IHS) was introduced on 6 April 2015 under the provisions of the Immigration Act 2014 and the Immigration (Health Charge) Order 2015. From 6 April 2015, nationals of countries outside the European Economic Area (EEA) 4 who apply for leave to enter the UK for more than six months, or who apply to extend their stay, in most immigration categories will pay the ‘Immigration Health Surcharge’, with the income going to the NHS.
 
-Find out more on the [INTEROPen website](http://interopen.org/).
+An intrinsic requirement to support the measures detailed above is to provide an indication on Spine of whether or not an NHS patient may be chargeable for NHS care. In support of this, NHS Digital has implemented the functionality to provide this indication via the Summary Care Record Application (SCRa) for a limited set of patients, i.e. those patients who have been identified as having paid the IHS; are exempt from paying or may be chargeable for NHS care.
+
+# Development Phases #
+The DoH Cost Recovery programme consists of five development phases that are outlined as part of the high-level maturity model. This site will primarily focus on Phase 3.
 
 # Using this guide #
 
-This guide has been created to support the adoption of Care Connect profiles and FHIR resources. As such the site is structured around Care Connect stakeholders including API users, developers and architects.  
+This guide has been created to support the adoption of profiles and FHIR resources. As such the site is structured around stakeholders including API users, developers and architects.  
 
 {% include custom/api_overview.svg %}
 
-The above steps outline a complete API journey from imagination and exploring to developing local APIs using Care Connect profiles all the way to deploying a live API.
+The above steps outline a complete API journey from imagination and exploring to developing local APIs using profiles all the way to deploying a live API.
 
 {% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with careconnect@interopen.org "%}
 
-# Care Connect Focus #
+# Focus #
 
 The current site focuses on a typical API Developer's Journey as highlighted by the green boxes below in the developer journey:
 

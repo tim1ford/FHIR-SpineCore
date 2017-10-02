@@ -9,7 +9,7 @@ summary: "The Access page shows developers and users of the API how to access an
 
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
 
-This page has been intentional created to show the growth of the implementation guide to support the end to end adoption of Care Connect profiles.
+This page has been intentional created to show the growth of the implementation guide to support the end to end adoption of profiles.
 
 {% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with careconnect@interopen.org "%}
 

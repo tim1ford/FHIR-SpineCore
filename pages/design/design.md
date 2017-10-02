@@ -4,7 +4,7 @@ keywords: design, build, access, security, overview
 tags: [design, overview]
 sidebar: foundations_sidebar
 permalink: design.html
-summary: "Describes the steps required to design & build an API using the Care Connect profiles described in Explore"
+summary: "Describes the steps required to design & build an API using the profiles described in Explore"
 ---
 
 {% include important.html content="All information provided below is indicative and subject to on-going review." %}
@@ -32,7 +32,7 @@ NHS Digital is contributing to progressing the profile development (see Overview
 
 # Contribute #
 
-This site is structured around Care Connect stakeholders including API users, developers and architects. Please get involved in the journey.
+This site is structured around stakeholders including API users, developers and architects. Please get involved in the journey.
 
 {% include custom/api_overview.svg %}
 

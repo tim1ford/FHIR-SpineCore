@@ -2,13 +2,13 @@
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Care Connect API | FHIR&reg;
+topnav_title: Visitors and Migrants API | FHIR&reg;
 # this appears on the top navigation bar next to the home button
 
-site_title: Care Connect
+site_title: Visitors and Migrants
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: INTEROPen and NHS Digital
+company_name: NHS Digital
 # this appears in the footer
 
 github_editme_path: /edit/develop/
@@ -27,7 +27,7 @@ github_editme_path: /edit/develop/
 #twitter_username: twitter_username
 #twitter_site_hashtags: twitter_site_hashtags
 
-fhir_profile_baseurl: https://fhir-test.hl7.org.uk/StructureDefinition/
+fhir_profile_baseurl: https://fhir.nhs.uk/StructureDefinition/
 
 nhsd:
   dds_link: https://nhsconnect.github.io/NHS-FHIR-DDS/Generated/
@@ -105,7 +105,7 @@ sidebars:
 - appointments_sidebar
 - tasks_sidebar
 
-description: "The Care Connect RESTful APIs support the delivery of care by opening information and data held across different clinical care settings through the use of nationally defined INTEROPen FHIR® resources."
+description: "The APIs support the delivery of care by opening information and data held across different clinical care settings through the use of nationally defined INTEROPen FHIR® resources."
 # the description is used in the feed.xml file
 
 sitemap: true
@@ -120,7 +120,7 @@ gist:
 
 site:
   fhirprofiles:
-    patient: "[Care Connect Patient](http://www.interopen.org/candidate-profiles/care-connect/CareConnect-Patient-1.html)"
+    patient: "[Patient](http://www.interopen.org/candidate-profiles/care-connect/CareConnect-Patient-1.html)"
 
 
 gems:

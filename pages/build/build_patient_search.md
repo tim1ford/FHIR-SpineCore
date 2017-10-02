@@ -27,7 +27,7 @@ Most NHS trusts will typically have one central system  called the Patient Admin
 max-width="200px" file="IHE/Iti_pam_ip.jpg" alt="Patient Identity Feeds"
 caption="Patient Identity Feeds" %}
 
-[HL7v2](https://isd.digital.nhs.uk/trud3/user/guest/group/0/pack/1/subpack/200/releases) is a mature and widely used standard but it is not suitable for querying patient demographic details (see HL7v2 Patient Demographics Query below). Mostly because it is a messaging standard and not an API. Care Connect API gives an API using [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) interface following a {% include custom/patterns.inline.html content="[resource API pattern](http://www.servicedesignpatterns.com/WebServiceAPIStyles/ResourceAPI)" %} to provide access to the central Patient repository.
+[HL7v2](https://isd.digital.nhs.uk/trud3/user/guest/group/0/pack/1/subpack/200/releases) is a mature and widely used standard but it is not suitable for querying patient demographic details (see HL7v2 Patient Demographics Query below). Mostly because it is a messaging standard and not an API. This API is using [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) interface following a {% include custom/patterns.inline.html content="[resource API pattern](http://www.servicedesignpatterns.com/WebServiceAPIStyles/ResourceAPI)" %} to provide access to the central Patient repository.
 This is particularly suited to:
 * A health portal securely exposing demographics data to browser based plugins
 * Medical devices which need to access patient demographic information

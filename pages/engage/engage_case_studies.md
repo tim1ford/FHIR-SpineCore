@@ -1,6 +1,6 @@
 ---
 title: Case Studies
-keywords: case studies, usecase, user stories, epics, scenarios, business analaysis, technical architecture, context
+keywords: case studies, usecase, user stories, epics, scenarios, business analysis, technical architecture, context
 tags: [foundations,use_case,user stories, epics, scenarios]
 sidebar: engage_sidebar
 permalink: engage_case_studies.html

@@ -29,7 +29,7 @@ NHS Digital is contributing to progressing the profile development (see Overview
 
 # Contribute #
 
-This site is structured around Care Connect stakeholders including API users, developers and architects. Please get involved in the journey.
+This site is structured around stakeholders including API users, developers and architects. Please get involved in the journey.
 
 {% include custom/api_overview.svg %}
 

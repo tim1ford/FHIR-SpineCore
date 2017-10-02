@@ -4,7 +4,7 @@ keywords: development,overview
 tags: [explanation]
 sidebar: overview_sidebar
 permalink: overview_api_journey.html
-summary: Care Connect API journey outlines the approach of developing RESTful APIs and the journey taken to define and mature the Care Connect APIs
+summary: API journey outlines the approach of developing RESTful APIs and the journey taken to define and mature the APIs
 ---
 
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
@@ -12,11 +12,11 @@ summary: Care Connect API journey outlines the approach of developing RESTful AP
 
 # The Journey #
 
-The API Journey is a guide from imagination and exploring to developing local APIs using Care Connect profiles all the way to deploying a live API.  
+The API Journey is a guide from imagination and exploring to developing local APIs using profiles all the way to deploying a live API.  
 
 {% include custom/api_overview.svg %}
 
-The above steps outline a complete API journey .
+The above steps outline a complete API journey.
 
 # Profile journey #
 

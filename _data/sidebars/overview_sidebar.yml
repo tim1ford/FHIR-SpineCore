@@ -1,7 +1,7 @@
 entries:
-- title: Care Connect
-  product: Care Connect
-  version: 1.5.0-alpha.0
+- title: Visitors and Migrants
+  product: Visitors and Migrants
+  version: 2.0.0-alpha
   levels: one
   folders:
 
@@ -62,70 +62,37 @@ entries:
       url: /explore.html
       output: web
       subfolders:
-      - title: Clinical
+
+      - title: Summary
         output: web
         subfolderitems:
-          - title: Allergy Intolerance
-            url: /api_clinical_allergyintolerance.html
-            output: web
-          - title: Condition
-            url: /api_clinical_condition.html
-            output: web
-          - title: Procedure
-            url: /api_clinical_procedure.html
+          - title: Spine Operation Outcome
+            url: /api_spine-operationoutcome.html
             output: web
       - title: Diagnostics
         output: web
         subfolderitems:
-          - title: Observation
-            url: /api_diagnostics_observation.html
+          - title: Spine VM Observation
+            url: /api_spine-vm-observation.html
             output: web
-      - title: Medication
+                      
+      - title: Base
         output: web
         subfolderitems:
-          - title: Medication
-            url: /api_medication_medication.html
+          - title: Audit
+            url: /api_base_audit.html
             output: web
-          - title: Medication Order
-            url: /api_medication_medicationorder.html
-            output: web
-          - title: Medication Statement
-            url: /api_medication_medicationstatement.html
-            output: web
-          - title: Immunization
-            url: /api_medication_immunization.html
-            output: web
-
-      - title: Individuals &amp; Entities
-        output: web
-        subfolderitems:
-          - title: Location
-            url: /api_entity_location.html
-            output: web
-          - title: Organisation
-            url: /api_entity_organisation.html
-            output: web
-          - title: Patient
-            url: /api_entity_patient.html
-            output: web
-          - title: Practitoner
-            url: /api_entity_practitoner.html
-            output: web
-      - title: Workflow
-        output: web
-        subfolderitems:
-          - title: Encounter
-            url: /api_workflow_encounter.html
-            output: web
+                      
       - title: Foundation
         output: web
         subfolderitems:
-        - title: Conformance
-          url: /api_foundation_conformance.html
+        - title: Capability Statement
+          url: /api_foundation_capabilitystatement.html
           output: web
         - title: ValueSet
           url: /api_foundation_valueset.html
           output: web
+                    
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
@@ -144,6 +111,7 @@ entries:
         - title: Care Connect Versioning
           url: /explore_cc_versioning.html
           output: web
+          
   - title: Design & Build
     output: web
     folderitems:
