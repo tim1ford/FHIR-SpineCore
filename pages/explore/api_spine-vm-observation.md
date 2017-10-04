@@ -8,7 +8,7 @@ summary: Measurements and simple assertions made about a patient, device or othe
 ---
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.html resource="Observation" page="spine-vm-observation-1" fhirlink="[Observation](https://www.hl7.org/fhir/observation.html)" content="N/A" userlink=" " %}
+{% include custom/fhir.reference.html resource="Observation" page="spine-vm-observation-2" fhirlink="[Observation](https://www.hl7.org/fhir/observation.html)" content="N/A" userlink=" " %}
 
 
 ## 1. Read ##
