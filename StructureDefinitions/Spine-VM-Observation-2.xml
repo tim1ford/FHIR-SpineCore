@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <meta>
-    <lastUpdated value="2017-10-04T09:44:02.613+01:00" />
+    <lastUpdated value="2017-10-04T09:57:44.321+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
     <valueCode value="oo" />
   </extension>
-  <url value="http://StructureDefinition/stu3/Spine-VM-Observation-1" />
-  <version value="1.0.0" />
-  <name value="Spine-VM-Observation-1" />
+  <url value="http://StructureDefinition/stu3/Spine-VM-Observation-2" />
+  <version value="2.0.0" />
+  <name value="Spine-VM-Observation-2" />
   <status value="draft" />
   <date value="2017-08-23T14:42:47.0785596+01:00" />
   <publisher value="HSCIC" />
@@ -20,7 +20,7 @@
       <use value="work" />
     </telecom>
   </contact>
-  <description value="Base StructureDefinition for Observation Resource for the Spine-VM-Observation-1" />
+  <description value="Base StructureDefinition for Observation Resource for the Spine-VM-Observation-2" />
   <copyright value="Copyright © 2016 Health and Social Care Information Centre. NHS Digital is the trading name of the Health and Social CareInformation Centre." />
   <fhirVersion value="3.0.1" />
   <kind value="resource" />
