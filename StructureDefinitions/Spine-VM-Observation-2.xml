@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <meta>
-    <lastUpdated value="2017-10-04T09:57:44.321+01:00" />
+    <lastUpdated value="2017-10-04T14:02:49.749+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
     <valueCode value="oo" />
@@ -21,7 +21,7 @@
     </telecom>
   </contact>
   <description value="Base StructureDefinition for Observation Resource for the Spine-VM-Observation-2" />
-  <copyright value="Copyright © 2016 Health and Social Care Information Centre. NHS Digital is the trading name of the Health and Social CareInformation Centre." />
+  <copyright value="© 2017 NHS Digital " />
   <fhirVersion value="3.0.1" />
   <kind value="resource" />
   <abstract value="false" />

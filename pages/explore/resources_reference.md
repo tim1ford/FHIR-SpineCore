@@ -23,9 +23,12 @@ summary: "Developer Cheat Sheet shortcuts for the <br/>technical build of Visito
 
 ## 2. Identifiers ##
 
-| identifier | URI | Comment |
+| Identifier | URI | Comment |
 |--------------------------------------------|----------|----|
 | Observation code | https://fhir.nhs.uk/ValueSet/fhir-observation-code-1 | Observation |
 | Spine OperationOutcome code | https://fhir.nhs.uk/spine-error-or-warning-code-1 | Operation Outcome |
 | NHS Number  | https://fhir.nhs.uk/Id/nhs-number | Patient |
+| Device Id  | http://www.acme.com/identifiers/patient | Device |
+| Org Id  | https://fhir.nhs.uk/Id/ods-organization-code | Organization |
+| Practitioner Id  | https://fhir.nhs.uk/Id/sds-role-profile-id | Practitioner |
 
