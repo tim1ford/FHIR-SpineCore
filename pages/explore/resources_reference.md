@@ -13,7 +13,7 @@ summary: "Developer Cheat Sheet shortcuts for the <br/>technical build of Visito
 
 | Profile | ValueSets |
 | :--------- |:-------- |
-| [Spine-VM-Observation](https://fhir.nhs.uk/StructureDefinition/spine-vm-observation-2) | [fhir-observation-code-1](https://fhir.nhs.uk/ValueSet/fhir-observation-code-1) <br /> [spine-vm-observation-component-1](https://fhir.nhs.uk/ValueSet/spine-vm-observation-component-1) <br /> [spine-chargeable-status-1](https://fhir.nhs.uk/ValueSet/spine-chargeable-status-1) <br /> [spine-category-status-1](https://fhir.nhs.uk/ValueSet/spine-category-status-1) |
+| [Spine-VM-Observation](https://fhir.nhs.uk/StructureDefinition/spine-vm-observation-2) | [fhir-observation-code-1](https://fhir.nhs.uk/ValueSet/fhir-observation-code-1) <br /> [spine-vm-observation-component-2](https://fhir.nhs.uk/ValueSet/spine-vm-observation-component-2) <br /> [spine-chargeable-status-1](https://fhir.nhs.uk/ValueSet/spine-chargeable-status-1) <br /> [spine-category-status-1](https://fhir.nhs.uk/ValueSet/spine-category-status-1) |
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1) | [spine-error-or-warning-code-1](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1) <br /> |
 | [Audit-Patient-1](https://fhir.nhs.uk/StructureDefinition/audit-patient-1) ||
 | [Audit-Device-1](https://fhir.nhs.uk/StructureDefinition/audit-device-1) | [device-type-codes-snct-1](https://fhir.nhs.uk/ValueSet/device-type-codes-snct-1) <br /> |
