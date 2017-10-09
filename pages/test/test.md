@@ -27,7 +27,7 @@ The following diagram explains the elements of APIs allowing a the development o
 
 {% include custom/provide_api.svg %}
 
-NHS Digital is contributing to progressing the profile development (see Overview section). Invitations are open for the INTEROPen community to get involved and progress the wider developer ecosystem as defined above. 
+NHS Digital is contributing to progressing the profile development (see Overview section). 
 
 
 # Contribute #

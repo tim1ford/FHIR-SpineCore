@@ -15,7 +15,7 @@ The Assure section contains descriptions of approaches and suggestions for build
 | Security | The security of the FHIR payload, access and data at rest are all important design decisions while building an API.  | 
 | End to end | The end to end assurance necessary to deliver an assured API.  | 
 
-Please see or contribute to INTEROPen to support the wider community efforts of providing a completely defined API service.
+Please see or contribute to support the wider community efforts of providing a completely defined API service.
 
 
 # Providing an API #
@@ -24,7 +24,7 @@ The following diagram explains the elements of APIs allowing a the development o
 
 {% include custom/provide_api.svg %}
 
-NHS Digital is contributing to progressing the profile development (see Overview section). Invitations are open for the INTEROPen community to get involved and progress the wider developer ecosystem as defined above. 
+NHS Digital is contributing to progressing the profile development (see Overview section).
 
 
 # Contribute #
