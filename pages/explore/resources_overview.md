@@ -80,11 +80,11 @@ This section looks at the Visitors and Migrants profile API's covered within thi
 </tr>
 <tr>
 <td>Spine-OperationOutcome</td>
-<td><a href="api_spine-vm-observation.html">Spine-VM-Observation</a></td>
+<td></td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="https://github.com/nhsconnect/FHIR-SpineCore" target="_blank">The Spine-OperationOutcome resource is part of the FHIR-SpineCore pack</a></td>
+<td></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -112,12 +112,11 @@ This section looks at the Visitors and Migrants profile API's covered within thi
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="https://github.com/nhsconnect/FHIR-SpineCore" target="_blank">The Audit resources are part of the FHIR-SpineCore pack</a></td>
+<td></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </table>
-
 
 <table style="min-width:100%;width:100%">
 <tr id="conformance">
