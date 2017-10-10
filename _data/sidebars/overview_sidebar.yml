@@ -1,7 +1,7 @@
 entries:
-- title: Visitors and Migrants
-  product: Visitors and Migrants
-  version: 2.0.0-beta
+- title: FHIR Spine Core
+  product: FHIR Spine Core
+  version: 1.0.0-beta
   levels: one
   folders:
 
