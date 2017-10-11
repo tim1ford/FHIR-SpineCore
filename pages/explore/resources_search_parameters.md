@@ -32,10 +32,3 @@ The parameters have been selected on usage frequency. Frequently used parameters
 It is believed this MAY conformance is not enough in a U.K. setting and this should be increased to SHALL or SHOULD. MAY parameters are no different to other optional standard FHIR search parameters. If feedback indicates they should remain optional (MAY), they will be treated as such and the references removed from the `2.2 Search` section of the resources.
 
 Feedback is requested from suppliers and consumers to confirm the conformance level for all parameters in the section `2.2 Search` for all resources.
-
-
-## 3. Improvement process ##
-
-An improvement process needs to be developed to improve the search parameters and validate the ones already suggested. Please contact the careconnect team if you have any suggestions.
-
-{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to improve the Search Parameters" %}

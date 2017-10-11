@@ -68,13 +68,8 @@ For more information on the wider design decisions involved in providing safe ac
 - [Safe, legal and secure](https://developer.nhs.uk/library/save-legal-secure/) guide from developer.nhs.uk provides an overview of some design decisions and considerations to consider when implementing APIs. 
 - [Case Studies](/engage_case_studies.html) illustrates design and security decisions used to solve the challenges faced within the context and design pattern encountered.
 
-
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
-
 # API Considerations #
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
-
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}

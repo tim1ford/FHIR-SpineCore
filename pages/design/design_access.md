@@ -37,13 +37,8 @@ For more information on the wider design decisions involved in providing safe ac
 
 - [Case Studies](/engage_case_studies.html) illustrates access decisions used to solve the challenges faced within the context and design patterns encountered.
 
-
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
-
 # API Considerations #
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
-
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}

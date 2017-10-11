@@ -29,8 +29,6 @@ SHALL declare a Conformance identifying the list of profiles, operations, search
 
 Only verified NHS Number SHALL be used with profiles. This can be achieved using a spine accredited system, a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV), or using a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/) to verify the NHS Number.
 
-{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to improve the Prerequisites." %}
-
 ## 2. Resource API Structure ##
 The FHIR Visitors and Migrants profile API's described in the Explore section of this implementation guide have been structured consistently in the following way:
 - `0.` References
@@ -79,7 +77,7 @@ This section looks at the Visitors and Migrants profile API's covered within thi
 <th style="width:33%;">&nbsp;</th>
 </tr>
 <tr>
-<td>Spine-OperationOutcome</td>
+<td><a href="api_spine-operationoutcome.html">Spine-OperationOutcome</a></td>
 <td></td>
 <td>&nbsp;</td>
 </tr>
@@ -102,13 +100,13 @@ This section looks at the Visitors and Migrants profile API's covered within thi
 <th>&nbsp;</th>
 </tr>
 <tr>
-<td>Audit-Patient</td>
-<td>Audit-Device</td>
-<td>Audit-Organization</td>
+<td><a href="api_base_audit_patient.html">Audit-Patient</a></td>
+<td><a href="api_base_audit_device.html">Audit-Device</a></td>
+<td><a href="api_base_audit_organization.html">Audit-Organization</a></td>
 </tr>
 <tr>
-<td>Audit-Practitioner</td>
-<td>Audit-PractitionerRole</td>
+<td><a href="api_base_audit_practitioner.html">Audit-Practitioner</a></td>
+<td><a href="api_base_audit_practitionerrole.html">Audit-Practitioner-Role</a></td>
 <td>&nbsp;</td>
 </tr>
 <tr>

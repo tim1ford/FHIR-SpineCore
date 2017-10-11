@@ -40,13 +40,8 @@ Below is a list of patterns. If you require more detail please go to [developer.
 
 Considering the design pattern / topology influences how any exposed APIs can be used and work within a system. APIs help to expose information to all design patterns allowing great user experiences to be created quickly, securely and consistantly. This implementation guide concentrates on [Case Studies](/engage_case_studies.html) to expose and demonstrate how design pattern can use APIs to interoperate with other systems, patterns, and level of digital maturity within and between organisations.
 
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
-
 # API Considerations #
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
-
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}
-

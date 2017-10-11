@@ -51,7 +51,7 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_email: careconnect@interopen.org
+feedback_email: 
 # used as a contact email for the Feedback link in the top navigation bar
 
 feedback_disable: true
@@ -105,7 +105,7 @@ sidebars:
 - appointments_sidebar
 - tasks_sidebar
 
-description: "The APIs support the delivery of care by opening information and data held across different clinical care settings through the use of nationally defined INTEROPen FHIR® resources."
+description: "The APIs support the delivery of care by opening information and data held across different clinical care settings through the use of FHIR® resources."
 # the description is used in the feed.xml file
 
 sitemap: true
@@ -120,7 +120,7 @@ gist:
 
 site:
   fhirprofiles:
-    patient: "[Patient](http://www.interopen.org/candidate-profiles/care-connect/CareConnect-Patient-1.html)"
+    patient: "[Patient](https://www.hl7.org/fhir/patient.html)"
 
 
 gems:

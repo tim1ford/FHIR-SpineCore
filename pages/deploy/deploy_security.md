@@ -26,5 +26,3 @@ The following four key principles should be considered during the deploying:
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
-
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}

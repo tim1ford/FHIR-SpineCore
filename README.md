@@ -1,16 +1,11 @@
-# CareConnectAPI
+# API
 
 <p align="center">
-  <a href="https://v4-alpha.getbootstrap.com">
-  	<img src="images/interopen.png" height=72> INTEROpen
-  	Powered by
     <img src="images/logo.png" height=72>
   </a>
 
-  <h3 align="center">CareConnect API</h3>
-
   <p align="center">
-    Implementation Guide for creating CareConnect APIs
+    Implementation Guide for creating APIs
     <br>
     <a href="#"><strong>Visit the APIs &raquo;</strong></a>
   </p>
@@ -77,17 +72,6 @@ Please read through our [contributing guidelines](). Included are directions for
 Moreover, if your pull request contains patches or features, you must include [relevant unit tests](). All HTML and CSS should conform to the [Code Guide](), maintained by [XYZ]().
 
 Editor preferences are available in the [editor config]() for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
-
-
-
-## Community
-
-Get updates on CareConnect APIs development and chat with the project maintainers and community members.
-
-- Follow [@careconnectapi on Twitter](https://twitter.com/getbootstrap).
-- Read and subscribe to [The INTEROpen CareConnect API](http://www.interopen.org/).
-- Join [the official Ryver room](https://interopen.ryver.com/).
-
 
 ## Versioning
 
