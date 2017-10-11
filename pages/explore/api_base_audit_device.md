@@ -3,7 +3,7 @@ title: Clinical | API Base Audit
 keywords: getcarerecord, structured, rest, condition
 tags: [rest,fhir,condition,clinical,api]
 sidebar: accessrecord_rest_sidebar
-permalink: api_base_audit.html
+permalink: api_base_audit_device.html
 summary: Spine Audit.
 ---
 {% include custom/search.warnbanner.html %}
