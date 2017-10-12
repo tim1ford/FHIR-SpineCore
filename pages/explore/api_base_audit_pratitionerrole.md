@@ -1,10 +1,10 @@
 ---
-title: Clinical | API Base Audit
+title: Clinical | API Base Audit Practitioner Role
 keywords: getcarerecord, structured, rest, condition
 tags: [rest,fhir,condition,clinical,api]
 sidebar: accessrecord_rest_sidebar
 permalink: api_base_audit_practitionerrole.html
-summary: Spine Audit.
+summary: Spine Audit Practitioner Role.
 ---
 {% include custom/search.warnbanner.html %}
 
@@ -12,4 +12,4 @@ summary: Spine Audit.
 
 ## Audit Resources ##
 
-<a href="https://github.com/nhsconnect/FHIR-SpineCore" target="_blank">The Audit resources are part of the FHIR-SpineCore pack</a>
+This resource is based on the Practitioner Role resource but only contains the identifier element for audit tracking purposes.
