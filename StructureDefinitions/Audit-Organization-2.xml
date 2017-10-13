@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <meta>
-    <lastUpdated value="2017-10-13T12:45:51.682+01:00" />
+    <lastUpdated value="2017-10-13T14:48:48.273+01:00" />
   </meta>
   <url value="https://fhir.nhs.uk/StructureDefinition/STU3/audit-organization-2" />
   <version value="1.0.0" />
@@ -9,7 +9,16 @@
   <status value="draft" />
   <date value="2017-09-14T14:52:00.134+01:00" />
   <publisher value="NHS Digital" />
+  <contact>
+    <name value="Interoperability Team" />
+    <telecom>
+      <system value="email" />
+      <value value="interoperabilityteam@nhs.net" />
+      <use value="work" />
+    </telecom>
+  </contact>
   <description value="This Organization resource represents the information needed for the JSON Web Token." />
+  <copyright value="© 2017 NHS Digital" />
   <fhirVersion value="3.0.1" />
   <kind value="resource" />
   <abstract value="false" />
