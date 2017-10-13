@@ -69,18 +69,24 @@ entries:
           - title: Spine Operation Outcome
             url: /api_spine-operationoutcome.html
             output: web
-      - title: Diagnostics
-        output: web
-        subfolderitems:
-          - title: Spine VM Observation
-            url: /api_spine-vm-observation.html
-            output: web
                       
       - title: Base
         output: web
         subfolderitems:
-          - title: Audit
-            url: /api_base_audit.html
+          - title: Audit Patient
+            url: /api_base_audit_patient.html
+            output: web
+          - title: Audit Device
+            url: /api_base_audit_device.html
+            output: web
+          - title: Audit Organization
+            url: /api_base_audit_organization.html
+            output: web
+          - title: Audit Practitioner
+            url: /api_base_audit_practitioner.html
+            output: web
+          - title: Audit Practioner Role
+            url: /api_base_audit_practitionerrole.html
             output: web
                       
       - title: Foundation
