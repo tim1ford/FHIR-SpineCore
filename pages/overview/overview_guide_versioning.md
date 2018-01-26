@@ -7,13 +7,7 @@ permalink: overview_guide_versioning.html
 summary: An overview of this implementation guide is versioned.
 ---
 
-{% include important.html content="This site is under active development by NHS Digital on behalf of INTEROPen and is intended to provide all the technical resources you need to successfully develop the APIs. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
-
-## Alpha ##
-
-This implementation guide is in currently in an alpha state at the moment. This means that changes and releases are occuring regularly.
-
-### Semantic Versioning ###
+## Semantic Versioning ##
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 

@@ -10,68 +10,14 @@ toc: false
 
 Glossary of common terms and abbreviations used though-out the Care Connect documentation site.
 
-ADT
-: {{site.data.glossary.adt}}
-
 API
 : {{site.data.glossary.api}}
-
-Argonaut
-: {{site.data.glossary.argonaut}}
 
 CAP
 : {{site.data.glossary.cap}}
 
-CCDA
-: {{site.data.glossary.ccda}}
-
-CCG
-: {{site.data.glossary.ccg}}
-
-CDA
-: {{site.data.glossary.cda}}
-
-CIB
-: {{site.data.glossary.cib}}
-
-CIMI
-: {{site.data.glossary.cimi}}
-
-dm+d
-: {{site.data.glossary.dmd}}
-
-DMS
-: {{site.data.glossary.dms}}
-
-DoH
-: {{site.data.glossary.doh}}
-
-DoS
-: {{site.data.glossary.dos}}
-
 DSTU
 : {{site.data.glossary.dstu}}
-
-EPS
-: {{site.data.glossary.eps}}
-
-ERS
-: {{site.data.glossary.ers}}
-
-FMG
-: {{site.data.glossary.fmg}}
-
-FMM
-: {{site.data.glossary.fmm}}
-
-GP2GP
-: {{site.data.glossary.gp2gp}}
-
-IDT
-: {{site.data.glossary.idt}}
-
-ITK
-: {{site.data.glossary.itk}}
 
 JSON
 : {{site.data.glossary.json}}
@@ -79,23 +25,8 @@ JSON
 LRS
 : {{site.data.glossary.lrs}}
 
-Meaningful Use
-: {{site.data.glossary.meaningfuluse}}
-
 MESH
 : {{site.data.glossary.mesh}}
-
-MIG
-: {{site.data.glossary.mig}}
-
-MIM
-: {{site.data.glossary.mim}}
-
-N3
-: {{site.data.glossary.n3}}
-
-.NET
-: {{site.data.glossary.net}}
 
 NHSD
 : {{site.data.glossary.nhsd}}
@@ -105,12 +36,6 @@ NRLS
 
 ODS
 : {{site.data.glossary.ods}}
-
-PAS
-: {{site.data.glossary.pas}}
-
-PID
-: {{site.data.glossary.pid}}
 
 PDS
 : {{site.data.glossary.pds}}
@@ -123,12 +48,6 @@ REST
 
 RESTful
 : {{site.data.glossary.restful}}
-
-RIM
-: {{site.data.glossary.rim}}
-
-ROA
-: {{site.data.glossary.roa}}
 
 SDS
 : {{site.data.glossary.sds}}
@@ -154,14 +73,3 @@ XML
 xPath
 : {{site.data.glossary.xpath}}
 
-UML
-: {{site.data.glossary.uml}}
-
-Use Case
-: {{site.data.glossary.usecase}}
-
-Use Case Diagram
-: {{site.data.glossary.usecasediagram}}
-
-VNA
-: {{site.data.glossary.vna}}
