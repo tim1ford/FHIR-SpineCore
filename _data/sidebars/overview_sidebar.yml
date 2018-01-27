@@ -65,26 +65,24 @@ entries:
     - title: Overview
       url: /design.html
       output: web
+    - title: Directory Service (SDS)
+      url: /build_directory.html
+      output: web
     - title: Access
       url: /design_access.html
       output: web
     - title: Security
       url: /design_security.html
       output: web
+
   - title: Test
     output: web
     folderitems:
     - title: Overview
       url: /test.html
       output: web
-    - title: Patterns / Topology
-      url: /test_patterns.html
-      output: web
-    - title: Access
-      url: /test_access.html
-      output: web
-    - title: Security
-      url: /test_security.html
+    - title: Environments
+      url: /test_environments.html
       output: web
     - title: Test Data
       url: /test_data.html

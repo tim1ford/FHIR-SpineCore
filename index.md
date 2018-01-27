@@ -23,3 +23,4 @@ There are two main classes of APIs that are covered by this guidance:
 
 This specification covers the common functionality for all the above nationally defined APIs processed through the Spine.
 
+NOTE: This specification does not cover FHIR messaging, or the transfer of FHIR "documents", for information on national standards for this, refer to the [ITK3 specifications]().
