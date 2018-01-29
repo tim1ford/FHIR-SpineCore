@@ -29,7 +29,6 @@ entries:
       url: /explore.html
       output: web
       subfolders:
-
       - title: Summary
         output: web
         subfolderitems:
@@ -45,7 +44,6 @@ entries:
         - title: ValueSet
           url: /api_foundation_valueset.html
           output: web
-                    
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
@@ -65,9 +63,16 @@ entries:
     - title: Overview
       url: /design.html
       output: web
-    - title: Directory Service (SDS)
-      url: /build_directory.html
-      output: web
+      subfolders:
+      - title: Directory Service (SDS)
+        output: web
+        subfolderitems:
+        - title: Overview
+          url: /build_directory.html
+          output: web
+        - title: Endpoint Lookup
+          url: /build_endpoints.html
+          output: web
     - title: Access
       url: /design_access.html
       output: web

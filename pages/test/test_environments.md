@@ -9,11 +9,18 @@ summary: "The Environments page covers the various Spine environments available 
 
 # What Spine environments are available? #
 
-TODO
+In addition to the live environment, Spine also provides a number of "path to live" environments:
 
-List environments
+- Development
+- Integration
+- Deployment
+- Training
+- Non-Functional Testing
+- Opentest
 
-Link to ASNs
+The full details of these environments, including the endpoint URLs for all the services in each environment can be found in the "authority service names" documents for each environment. These documents can be downloaded from the [Assurance Support Website](http://www.assurancesupport.digital.nhs.uk/) (note: an N3 connection required to access this site).
+
+The above site also holds copies of the parent Root and SubCA certificates which you'll need to verify the SSL certificates registered against for Spine services (all endpoint certificates are children of these parent certificates).
 
 # What is Opentest? #
 
