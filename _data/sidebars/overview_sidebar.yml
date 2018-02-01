@@ -28,26 +28,20 @@ entries:
     - title: Overview
       url: /explore.html
       output: web
+    - title: Spine Operation Outcome
+      url: /api_spine-operationoutcome.html
+      output: web
+    - title: Capability Statement
+      url: /api_foundation_capabilitystatement.html
+      output: web
+    - title: ValueSet
+      url: /api_foundation_valueset.html
+      output: web
       subfolders:
-      - title: Summary
-        output: web
-        subfolderitems:
-          - title: Spine Operation Outcome
-            url: /api_spine-operationoutcome.html
-            output: web
-      - title: Foundation
-        output: web
-        subfolderitems:
-        - title: Capability Statement
-          url: /api_foundation_capabilitystatement.html
-          output: web
-        - title: ValueSet
-          url: /api_foundation_valueset.html
-          output: web
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
-        - title: API Codes
+        - title: Error Codes
           url: /explore_api_codes.html
           output: web
         - title: Search Parameters
@@ -70,16 +64,62 @@ entries:
         - title: Overview
           url: /build_directory.html
           output: web
-        - title: Endpoint Lookup
+        - title: Endpoints
           url: /build_endpoints.html
           output: web
-    - title: Access
-      url: /design_access.html
+        - title: Lookup Example (SSP)
+          url: /build_endpoints_example_ssp.html
+          output: web
+    - title: Personal Demographics Service (PDS)
+      url: /pds_overview.html
       output: web
-    - title: Security
-      url: /design_security.html
-      output: web
+      subfolders:
+      - title: Spine Secure Proxy (SSP)
+        output: web
+        subfolderitems:
+        - title: Overview
+          url: /ssp_overview.html
+          output: web
+        - title: System Topologies
+          url: /ssp_system_topologies.html
+          output: web
+        - title: Implementation Guide
+          url: /ssp_implementation_guide.html
+          output: web
+        - title: Registering provider endpoints
+          url: /ssp_providers.html
+          output: web
+      - title: Spine Integration Examples
+        output: web
+        subfolderitems:
+        - title: GP Connect
+          url: /integration_example_gpconnect.html
+          output: web
+        - title: Visitors and Migrants
+          url: /integration_example_vandm.html
+          output: web
 
+      - title: Security
+        output: web
+        subfolderitems:
+        - title: System-to-System Trust
+          url: /security_tlsma.html
+          output: web
+        - title: User Authentication
+          url: /security_authentication.html
+          output: web
+        - title: National RBAC
+          url: /security_rbac.html
+          output: web
+        - title: API Authorisation
+          url: /security_authorisation.html
+          output: web
+        - title: Authorisation Scopes
+          url: /security_scopes.html
+          output: web
+    - title: Access Tokens and Audit (JWT)
+      url: /security_jwt.html
+      output: web
   - title: Test
     output: web
     folderitems:
