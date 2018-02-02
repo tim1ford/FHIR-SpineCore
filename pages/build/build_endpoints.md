@@ -42,28 +42,11 @@ Systems SHOULD cache SDS query results giving details of consuming system, endpo
 Consuming systems SHALL NOT cache and re-use consuming system, endpoint information derived from SDS across multiple patient encounters or practitioner usage sessions. Each new patient encounter will result in new lookups to ascertain the most up-to-date consuming system, endpoint and endpoint capability.
 
 
-#### Step 1: Accredited System ID (ASID) Lookup ####
+## Step 1a: Accredited System ID (ASID) Lookup for a National Spine Service ##
 
-##### Lookup for National Services #####
+When the client wants to make a call to a national Spine service (e.g. NRLS, Visitors and Migrants, etc), the first step is to estanlish the Party Key for the Spine (there is a single Party Key for each Spine environment. This is fixed for each environment, so does not need to be looked up on SDS - to find the Party Key for the Spine environment refer to the "Authority Service Names" document for the relevant Spine environment - see [Environments](test_environments.html) for details.
 
-When the client wants to make a call to a national Spine service (e.g. NRLS, Visitors and Migrants, etc), the client SHALL query SDS to find the appropriate Accredited System ID (ASID) as follows:
-
-- Accredited System type
-	- objectClass = `nhsAs`
-- Organisational code
-	- nhsIDCode = XXXXXXX
-- Interaction ID
-	- nhsAsSvcIA = *[interactionId]* of the API operation required.
-
-```bash
-ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk –b "ou=services, o=nhs" 
-	"(&(nhsIDCode=[odsCode]) (objectClass=nhsAS)(nhsAsSvcIA=[interactionId]))" 
-	uniqueIdentifier nhsMhsPartyKey
-```
-
-The ASID will be returned in the uniqueIdentifier attribute which is returned from the ldaps query above.
-
-##### Lookup for Brokered call to External Services #####
+## Step 1b: Accredited System ID (ASID) Lookup for an external service (brokered via SSP) ###
 
 When the client wants to query an external service brokered through the Spine Security Proxy (e.g. a GP Connect API), the client SHALL use an organisation ODS code for the target organisation to lookup the Accredited System ID (ASID) as follows:
 
@@ -89,16 +72,16 @@ Please refer to the specification of the specific FHIR API you are using for det
 - [GP Connect operation guidance](https://developer.nhs.uk/apis/gpconnect/development_fhir_operation_guidance.html) for details of the GPConnect interactionId appropriate for your use case.
 
 
-##### Step 2: Message Handling System (MHS) Lookup #####
+## Step 2: Message Handling System (MHS) Lookup ##
 
-Clients SHALL lookup the FHIR endpoint from the MHS record using the Party Key retrieved in step 1, as follows:
+Clients SHALL lookup the endpoint URL from the MHS record using the Party Key retrieved in step 1, as follows:
 
 - Message Handling System type
 	- objectClass = `nhsMHS`
 - MHS Party Key
 	- nhsMHSPartyKey = *[partyKey]* as retrieved from the nhsMhsPartyKey attribute in step 1
 - MHS Interaction ID
-	- nhsMhsSvcIA = *[interactionId]* of the GP Connect API operation required(?)
+	- nhsMhsSvcIA = *[interactionId]* of the API operation required(?)
 
 
 ```bash
@@ -109,17 +92,17 @@ ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk -b "ou=services, o=nhs"
 
 The FHIR endpoint URL of the message handling system can then be extracted from the `nhsMhsEndPoint` attribute of the MHS record. The attribute nhsMhsFQDN could also be retrieved in the above query to retrieve the FQDN of the endpoint, though this can be extracted from the nhsMhsEndPoint.
 
-##### ldapsearch configuration #####
+## ldapsearch configuration ##
 
 SDS requires TLS Mutual Authentication. It is therefore necessary to configure ldapsearch in the examples above with the certificates necessary to verify the authenticity of the SDS LDAP server, and also to enable SDS to verify the spine endpoint making the LDAP request:
 
 1. Root and SubCA spine development certificates available from Assurance Support
 2. Obtain a client certificate by submitting a certificate signing request for your development endpoint to Assurance Support
 
-###### Server certificate setup ######
+## Server certificate setup ##
 For the examples above, ldapsearch should be configured to find the RootCA and SubCA certificates using the TLS_CACERT option in the ldap.conf file. This should point to a file, in PEM format, which contains both root and subca certificates ensuring that the root certificate is placed after the subCA certificae. The LDAPCONF environment vairable can be used to define the location of the ldap.conf 
 
-###### Client certificate setup ######
+## Client certificate setup ##
 The client certificate and encrypted private key should be defined in the .ldaprc file using the following directives.
 
 `
@@ -129,5 +112,5 @@ TLS_KEY C:\mydir\key.pem
 
 The location of the .ldaprc file can be defined using the LDAPRC environment variable.
 
-Please contact [Assurance Support service desk](mailto:sa.servicedesk@nhs.net) for certificates and details of the ldap server for your environment.
+See [Environments](test_environments.html) for details of where to find URLs for SDS.
 

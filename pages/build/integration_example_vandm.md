@@ -9,7 +9,7 @@ summary: "Illustration of the use of the Visitors and Migrants API showing all i
 
 ## Spine integration required to retrieve visitors and migrants chargeable status ##
 
-The full details of the visitors and migrants APIs can be found in the [Visitors and Migrants API Specification](https://developer.nhs.uk/apis/vandm).
+The full details of the visitors and migrants APIs can be found in the [Visitors and Migrants API Specification](https://developer.nhs.uk/apis/vandm){:target="_blank"}.
 
 Consumers of the visitors and migrants API are required to integrate with the following Spine services as a pre-requisite to making API calls:
 
