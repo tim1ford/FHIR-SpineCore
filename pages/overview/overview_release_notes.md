@@ -9,6 +9,7 @@ summary: Summary release notes of the versions released in API Implementation Gu
 
 Note - versions of this specification follow semantic versioning - minor and patch versions should be considered as non-breaking.
 
-## 1.0.0-beta (26th January 2018) ##
+## 0.1.0-alpha (2nd February 2018) ##
 
-First Beta release of API spec
+First incomplete alpha version of API spec
+
