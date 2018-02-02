@@ -1,6 +1,6 @@
 entries:
-- title: FHIR Spine Core
-  product: FHIR Spine Core
+- title: Spine Core FHIR
+  product: Spine Core FHIR
   version: 1.0.0-beta
   levels: one
   folders:
@@ -12,12 +12,6 @@ entries:
       url: /index.html
       output: web, pdf
       type: homepage
-    - title: API Journey
-      url: /overview_api_journey.html
-      output: web
-    - title: Provide APIs
-      url: /overview_api_provide.html
-      output: web
     - title: Guide Versioning
       url: /overview_guide_versioning.html
       output: web
@@ -28,81 +22,26 @@ entries:
       url: /overview_glossary.html
       output: web
 
-  - title: Case Studies
-    output: web
-    folderitems:
-
-    - title: Engagement Approach
-      url: /engage.html
-      output: web, pdf
-      type: homepage
-
-      subfolders:
-      - title: Case Studies
-        output: web
-        subfolderitems:
-
-        - title: "Case Study Overview"
-          url: /engage_case_studies.html
-          output: web
-        - title: Bristol Connecting Care POC
-          url: /engage_poc_bristolcc.html
-          output: web
-        - title: "University Hospital Southampton"
-          url: /engage_poc_uhscc.html
-          output: web
-        - title: "Michael's Story"
-          url: /engage_michaelsstory.html
-          output: web
-
   - title: Resources
     output: web
     folderitems:
     - title: Overview
       url: /explore.html
       output: web
+    - title: Spine Operation Outcome
+      url: /api_spine-operationoutcome.html
+      output: web
+    - title: Capability Statement
+      url: /api_foundation_capabilitystatement.html
+      output: web
+    - title: ValueSet
+      url: /api_foundation_valueset.html
+      output: web
       subfolders:
-
-      - title: Summary
-        output: web
-        subfolderitems:
-          - title: Spine Operation Outcome
-            url: /api_spine-operationoutcome.html
-            output: web
-                      
-      - title: Base
-        output: web
-        subfolderitems:
-          - title: Audit Patient
-            url: /api_base_audit_patient.html
-            output: web
-          - title: Audit Device
-            url: /api_base_audit_device.html
-            output: web
-          - title: Audit Organization
-            url: /api_base_audit_organization.html
-            output: web
-          - title: Audit Practitioner
-            url: /api_base_audit_practitioner.html
-            output: web
-          - title: Audit Practioner Role
-            url: /api_base_audit_practitionerrole.html
-            output: web
-                      
-      - title: Foundation
-        output: web
-        subfolderitems:
-        - title: Capability Statement
-          url: /api_foundation_capabilitystatement.html
-          output: web
-        - title: ValueSet
-          url: /api_foundation_valueset.html
-          output: web
-                    
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
-        - title: API Codes
+        - title: Error Codes
           url: /explore_api_codes.html
           output: web
         - title: Search Parameters
@@ -111,12 +50,6 @@ entries:
         - title: Open Source
           url: /explore_fhir_open_source_guidance.html
           output: web
-        - title: Reference
-          url: /explore_reference.html
-          output: web
-        - title: Care Connect Versioning
-          url: /explore_cc_versioning.html
-          output: web
           
   - title: Design & Build
     output: web
@@ -124,45 +57,77 @@ entries:
     - title: Overview
       url: /design.html
       output: web
-    - title: Patterns / Topology
-      url: /design_patterns.html
-      output: web
-    - title: Exchange Patterns
-      url: /design_exchange_patterns.html
-      output: web
-    - title: Access
-      url: /design_access.html
-      output: web
-    - title: Security
-      url: /design_security.html
-      output: web
       subfolders:
-      - title: Build
+      - title: Directory Service (SDS)
         output: web
         subfolderitems:
-          - title: Patient Search
-            url: /build_patient_search.html
-            output: web
-          - title: Clinical | Care Coord
-            url: /build_pcc_clinical.html
-            output: web
-          - title: Medication | Care Coord
-            url: /build_pcc_medication.html
-            output: web
+        - title: Overview
+          url: /build_directory.html
+          output: web
+        - title: Endpoints
+          url: /build_endpoints.html
+          output: web
+        - title: Lookup Example (SSP)
+          url: /build_endpoints_example_ssp.html
+          output: web
+    - title: Personal Demographics Service (PDS)
+      url: /pds_overview.html
+      output: web
+      subfolders:
+      - title: Spine Secure Proxy (SSP)
+        output: web
+        subfolderitems:
+        - title: Overview
+          url: /ssp_overview.html
+          output: web
+        - title: System Topologies
+          url: /ssp_system_topologies.html
+          output: web
+        - title: Implementation Guide
+          url: /ssp_implementation_guide.html
+          output: web
+        - title: Registering provider endpoints
+          url: /ssp_providers.html
+          output: web
+      - title: Spine Integration Examples
+        output: web
+        subfolderitems:
+        - title: GP Connect
+          url: /integration_example_gpconnect.html
+          output: web
+        - title: Visitors and Migrants
+          url: /integration_example_vandm.html
+          output: web
+
+      - title: Security
+        output: web
+        subfolderitems:
+        - title: System-to-System Trust
+          url: /security_tlsma.html
+          output: web
+        - title: User Authentication
+          url: /security_authentication.html
+          output: web
+        - title: National RBAC
+          url: /security_rbac.html
+          output: web
+        - title: API Authorisation
+          url: /security_authorisation.html
+          output: web
+        - title: Authorisation Scopes
+          url: /security_scopes.html
+          output: web
+    - title: Access Tokens and Audit (JWT)
+      url: /security_jwt.html
+      output: web
   - title: Test
     output: web
     folderitems:
     - title: Overview
       url: /test.html
       output: web
-    - title: Patterns / Topology
-      url: /test_patterns.html
-      output: web
-    - title: Access
-      url: /test_access.html
-      output: web
-    - title: Security
-      url: /test_security.html
+    - title: Environments
+      url: /test_environments.html
       output: web
     - title: Test Data
       url: /test_data.html

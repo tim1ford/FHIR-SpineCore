@@ -13,4 +13,4 @@ summary: A collection of error, warning or information messages that result from
 
 ## Spine Operation Outcome ##
 
-<a href="https://github.com/nhsconnect/FHIR-SpineCore" target="_blank">The Spine-OperationOutcome resource is part of the FHIR-SpineCore pack</a>
+TODO
