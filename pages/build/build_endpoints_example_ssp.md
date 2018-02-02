@@ -27,7 +27,7 @@ The following steps MUST be followed:
 
 ### Step 0. PDS Trace (pre-requisite step)
 
-The Consuming system is responsible for [performing a PDS Trace](integration_personal_demographic_service.html) to both verify the identity of the patient and retrieve the ODS code of the patient's registered primary care practice. 
+The Consuming system is responsible for [performing a PDS Trace](pds_overview.html) to both verify the identity of the patient and retrieve the ODS code of the patient's registered primary care practice. 
 
 For this example, NHS Number 9000000084 with demographic details Mr Anthony Tester, 19 Ficticious Avenue, Testtown returns the ODS code T99999
 

@@ -18,9 +18,11 @@ In addition to the live environment, Spine also provides a number of "path to li
 - Non-Functional Testing
 - Opentest
 
-The full details of these environments, including the endpoint URLs for all the services in each environment can be found in the "authority service names" documents for each environment. These documents can be downloaded from the [Assurance Support Website](http://www.assurancesupport.digital.nhs.uk/) (note: an N3 connection required to access this site).
+The full details of these environments, including the endpoint URLs for all the services in each environment can be found in the "authority service names" documents for each environment. These documents can be downloaded from the [Assurance Support Website](http://www.assurancesupport.digital.nhs.uk/){:target="_blank"} (note: an N3 connection required to access this site).
 
 The above site also holds copies of the parent Root and SubCA certificates which you'll need to verify the SSL certificates registered against for Spine services (all endpoint certificates are children of these parent certificates).
+
+Please contact [Assurance Support service desk](mailto:sa.servicedesk@nhs.net) if you can't find the information required, or need help with obtaining an endpoint certificate to access a Spine environment.
 
 # What is Opentest? #
 
