@@ -70,6 +70,9 @@ entries:
         - title: Lookup Example (SSP)
           url: /build_endpoints_example_ssp.html
           output: web
+        - title: Lookup Example (Spine FHIR Endpoints)
+          url: /build_endpoints_example_spine_fhir.html
+          output: web
     - title: Personal Demographics Service (PDS)
       url: /pds_overview.html
       output: web
