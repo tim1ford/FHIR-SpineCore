@@ -21,14 +21,14 @@ An example such an HTTP header is given below:
      Authorization: Bearer jwt_token_string
 ```
 
-API Provider systems SHALL respond to oAuth Bearer Token errors inline with [RFC 6750 - section 3.1](https://tools.ietf.org/html/rfc6750#section-3.1).
+API Provider systems SHALL respond to oAuth Bearer Token errors in line with [RFC 6750 - section 3.1](https://tools.ietf.org/html/rfc6750#section-3.1).
 
 It is highly recommended that standard libraries are used for creating the JWT as constructing and encoding the token manually may lead to issues with parsing the token. A good source of information about JWT and libraries to use can be found on the [JWT.io site](https://jwt.io/)
 
 
 ## JWT without an Authorisation Server ##
 
-The new national authentication service is not yet in place, so it is not currently possible to request an Access token from that services. In the interrim, Consumer systems are expected to either use a local service to generate tokens, or generate a new JWT for each API request themselves. A consumer generated JSON Web Token (JWT) SHALL consisting of three parts seperated by dots `.`, which are:
+The new national authentication service is not yet in place, so it is not currently possible to request an Access token from that service. In the interim, Consumer systems are expected to either use a local service to generate tokens, or generate a new JWT for each API request themselves. A consumer generated JSON Web Token (JWT) SHALL consisting of three parts seperated by dots `.`, which are:
 
 - Header
 - Payload
@@ -47,7 +47,7 @@ Where Consumer systems are generating the JWT locally, they SHALL generate an Un
 
 ### Payload ###
 
-Consumers systems SHALL generate a JWT Payload conforming to the requiremnts setout in the [JWT Payload](#jwt-payload) section of this page.
+Consumers systems SHALL generate a JWT Payload conforming to the requirements set out in the [JWT Payload](#jwt-payload) section of this page.
 
 ### Signature ###
 
@@ -71,11 +71,11 @@ The Payload section of the JWT shall be populated as follows:
 | Claim | Priority | Description | Fixed Value | Dynamic Value |
 |-------|----------|-------------|-------------|------------------|
 | iss | R | Requesting systems issuer URI | No | Yes |
-| sub | R | ID for the user on whose behalf this request is being made. Will match wither the `requesting_user` or `requesting_patient` | No | Yes |
+| sub | R | ID for the user on whose behalf this request is being made. Will match either the `requesting_user` or `requesting_patient` | No | Yes |
 | aud | R | API endpoint URL | No | Yes |
 | exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
 | iat | R | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
-| reason_for_request | R | Purpose for which access is being requested | `directcare` | No |
+| reason_for_request | R | Purpose for which access is being requested | 'directcare', 'secondaryuses' or 'patientaccess' | No |
 | requested_scope | R | Data being requested | `patient/*.[read|write]` <br/>OR <br/>`organization/*.[read|write]` | No |
 | requesting_system | R | Identifier for the system or device making the request | No | System or Device Identifier |
 | requesting_organization | R | Organisation making the request | No | Organisation Identifier | 
