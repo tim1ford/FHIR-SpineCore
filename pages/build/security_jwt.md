@@ -75,7 +75,7 @@ The Payload section of the JWT shall be populated as follows:
 | aud | R | API endpoint URL | No | Yes |
 | exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
 | iat | R | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
-| reason_for_request | R | Purpose for which access is being requested | 'directcare', 'secondaryuses' or 'patientaccess' | No |
+| reason_for_request | R | Purpose for which access is being requested | `directcare`, `secondaryuses` or `patientaccess` | No |
 | requested_scope | R | Data being requested | `patient/*.[read|write]` <br/>OR <br/>`organization/*.[read|write]` | No |
 | requesting_system | R | Identifier for the system or device making the request | No | System or Device Identifier |
 | requesting_organization | R | Organisation making the request | No | Organisation Identifier | 
