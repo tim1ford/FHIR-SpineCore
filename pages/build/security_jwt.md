@@ -7,8 +7,6 @@ permalink: security_jwt.html
 summary: "Overview of how authorisation information is used and passed in APIs for audit and provenance."
 ---
 
-*NEEDS SIGNIFICANT RE-WRITING AND SIMPLIFYING BASED ON WORKSHOP OUTPUTS*
-
 ## Use of Bearer Tokens ###
 
 An output of [authorising access](security_authorisation.html) to an API is the provision of a JSON Web Token. This MUST be passed in the API calls to ensure the systems being called are able to verify that the user has been authorised to see the resources requested. This JWT is also used for audit purposes, so the API implementation (and the SSP in the case of a call brokered through that service) can record the user context in it's audit trail.
@@ -68,19 +66,19 @@ NOTE: The final section (the signature) is empty, so the JWT will end with a tra
 
 The Payload section of the JWT shall be populated as follows:
 
-| Claim | Priority | Description | Fixed Value | Dynamic Value |
+| Claim | Mandatory | Description | Fixed Value | Dynamic Value |
 |-------|----------|-------------|-------------|------------------|
-| iss | R | Requesting systems issuer URI | No | Yes |
-| sub | R | ID for the user on whose behalf this request is being made. Will match either the `requesting_user` or `requesting_patient` | No | Yes |
-| aud | R | API endpoint URL | No | Yes |
-| exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
-| iat | R | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
-| reason_for_request | R | Purpose for which access is being requested | `directcare`, `secondaryuses` or `patientaccess` | No |
-| requested_scope | R | Data being requested | `patient/*.[read|write]` <br/>OR <br/>`organization/*.[read|write]` | No |
-| requesting_system | R | Identifier for the system or device making the request | No | System or Device Identifier |
-| requesting_organization | R | Organisation making the request | No | Organisation Identifier | 
-| requesting_user | R | Health or Social Care professional making the request | No | User Identifier |
-| requesting_patient | R | Citizen making the request | No | NHS Number |
+| iss | Y | Requesting systems issuer URI | No | Yes |
+| sub | Y | ID for the user on whose behalf this request is being made. Will match either the `requesting_user` or `requesting_patient` | No | Yes |
+| aud | Y | API endpoint URL | No | Yes |
+| exp | Y | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
+| iat | Y | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
+| reason_for_request | Y | Purpose for which access is being requested | `directcare`, `secondaryuses` or `patientaccess` | No |
+| scope | Y | Data being requested | `patient/*.[read|write]` <br/>OR <br/>`organization/*.[read|write]` | No |
+| requesting_system | Y | Identifier for the system or device making the request | No | System or Device Identifier |
+| requesting_organization | N | Organisation making the request | No | Organisation Identifier | 
+| requesting_user | N | Health or Social Care professional making the request | No | User Identifier |
+| requesting_patient | N | Citizen making the request | No | NHS Number |
 
 
 ### JWT Payload Example ###
@@ -88,15 +86,16 @@ The Payload section of the JWT shall be populated as follows:
 ```json
 {
 	"iss": "https://cas.nhs.uk",
-	"sub": "https://fhir.nhs.uk/Id/sds-role-profile-id"|[SDSRoleProfileID]",
+	"sub": "https://fhir.nhs.uk/Id/sds-role-profile-id|[SDSRoleProfileID]",
 	"aud": "https://provider.thirdparty.nhs.uk/GP0001/STU3/1",
 	"exp": 1469436987,
 	"iat": 1469436687,
 	"reason_for_request": "directcare",
-	"requested_scope": "patient/*.read",
+	"scope": "patient/*.read",
 	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|[ASID]",
 	"requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|[ODSCode]",
-	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id"|[SDSRoleProfileID]"
+	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|[SDSRoleProfileID]"
+	"requesting_patient": "http://fhir.nhs.net/Id/nhs-number|[NHSNumber]"
 }
 ```
 
@@ -127,17 +126,49 @@ Common attributes are as defined in [rfc7519](https://tools.ietf.org/html/rfc751
 | sub | (Subject) An identifier for the person or system that has been authorised for access. In most cases this will be an identifier for a member of staff, identified by a Spine URP ID (see [RBAC](security_rbac.html)) for details. In cases where the API is being accessed by a citizen, this will be the NHS Number of that individual. |
 | aud | (Audience) The URI for the API Endpoint. This will be the fully qualified endpoint address returned to the Consumer by the [SDS endpoint lookup service](build_endpoints.html) as the value of `nhsMhsEndPoint`. |
 | reason_for_request | This identified the purpose for which the request is being made. This is currently limited to one of the following values: **directcare**, **secondaryuses** or **patientaccess**. |
-| requested_scope | This is a space-separated list of the [scopes](security_scopes.html) authorised for this user. Individual APIs will check this list to establish whether the authorisation grants access to the data being request by the client, and will reject the call if the appropriate scopes have not been granted in the token. |
+| scope | This is a space-separated list of the [scopes](security_scopes.html) authorised for this user. Individual APIs will check this list to establish whether the authorisation grants access to the data being request by the client, and will reject the call if the appropriate scopes have not been granted in the token. |
 | requesting_system | This is an identifier for the deployed client system that has been authorised to make API calls. In the case of Spine-enabled clients (or those using the [SSP](ssp_overview.html) to broker API calls), this will be a [Spine Accredited System ID](build_endpoints.html) (ASID)<br/>The naming system prefix for the ASID will be **https://fhir.nhs.uk/Id/accredited-system** |
-| requesting_organization | This is the ODS code of the care organisation from where the request originates.<br/>The naming system prefix for the ODS code will be **https://fhir.nhs.uk/Id/ods-organization-code** |
-| requesting_practitioner | If this authorisation relates to a member of staff, this attribute will hold the Spine URP ID (see [RBAC](security_rbac.html)) for details. In this case, the value of this attribute will match the "sub" attribute value.<br/>The naming system prefix for the URP ID code will be **https://fhir.nhs.uk/Id/sds-role-profile-id**<br/>Where national authorisation is not being used (e.g. where Spine is brokering a call to a local system that has authorised the API access directly), and a national SDS role profile ID can't be used, a local user identifier may be used instead.<br/>The naming system prefix for a local identifier will be a locally-defined URI specific to the system/service that managed the user identities - e.g. **https://my-care-service/Id/user-id**<br/>Where the user has both a local system 'role' as well as a nationally-recognised role, then the latter SHALL be provided. Default usernames (e.g. referring to systems or groups) SHALL NOT be used in this field. | |
-| requesting_patient | If this authorisation relates to a citizen, this attribute will hold the NHS Number of the citizen<br/>The naming system prefix for the NHS Number will be **http://fhir.nhs.net/Id/nhs-number** |
-
+| requesting_organization | This is the ODS code of the care organisation from where the request originates.<br/>The naming system prefix for the ODS code will be **https://fhir.nhs.uk/Id/ods-organization-code**<br/>This is likely to be mandatory for APIs used by professionals - the specific API documentation for each API will clarify whether this must be used. |
+| requesting_practitioner | If this authorisation relates to a member of staff, this attribute will hold the Spine URP ID (see [RBAC](security_rbac.html)) for details. In this case, the value of this attribute will match the "sub" attribute value.<br/>The naming system prefix for the URP ID code will be **https://fhir.nhs.uk/Id/sds-role-profile-id**<br/>Where national authorisation is not being used (e.g. where Spine is brokering a call to a local system that has authorised the API access directly), and a national SDS role profile ID can't be used, a local user identifier may be used instead.<br/>The naming system prefix for a local identifier will be a locally-defined URI specific to the system/service that managed the user identities - e.g. **https://my-care-service/Id/user-id**<br/>Where the user has both a local system 'role' as well as a nationally-recognised role, then the latter SHALL be provided. Default usernames (e.g. referring to systems or groups) SHALL NOT be used in this field.<br/>This is likely to be mandatory for APIs used by professionals - the specific API documentation for each API will clarify whether this must be used. | |
+| requesting_patient | If this authorisation relates to a citizen, this attribute will hold the NHS Number of the citizen<br/>The naming system prefix for the NHS Number will be **http://fhir.nhs.net/Id/nhs-number**<br/>This is likely to be mandatory for APIs used by patienrs/citizens - the specific API documentation for each API will clarify whether this must be used. |
 
 *TODO - Review whether we need/can use the endpoint URL in the aud claim? This would require that the URL is a parameter in the Authorisation request, which doesn't seem ideal?*
 
 
 {% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
+
+## Example JWT for an authorised professional ##
+
+TODO - Add one or more examples here.
+
+## Example JWT for an authorised citizen ##
+
+The below is an example of how the JWT might look for a citizen accessing an API to retrieve and update information about their consent preferences:
+
+```json
+{
+	"iss": "https://citizen-id.nhs.uk",
+	"sub": "http://fhir.nhs.net/Id/nhs-number|6101231234",
+	"aud": "https://clinicals.spineservices.nhs.uk",
+	"exp": 1469436987,
+	"iat": 1469436687,
+	"reason_for_request": "patientaccess",
+	"scope": "patient/consent.read patient/consent.write",
+	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"requesting_patient": "http://fhir.nhs.net/Id/nhs-number|6101231234"
+}
+```
+
+In the above example:
+
+- The access token was issued by the national Citizen identity service, so that service's URL is in the issuer (iss) field (this service does not exist yet, so the URL is an example only)
+- The patient has been identified as having the NHS number **6101231234**
+- The subject of the authorisation decision was the patient, so the **sub** value is the same as the **requesting_patient** value
+- The service that provides the APIs being authorised is the Spine clinicals service, so the audience (aud) URL is for that service
+- Issued and Expiry times are populated by the authorisation server to limit the lifetime of the access token
+- The information is being requested by the patient, so the reason for the request is **patientaccess**
+- The application developer has reviewed the API specification and identified that the scopes required for this data are: **patient/consent.read patient/consent.write**
+- The patient is using an application that has been reviewed and approved for access to Spine services, and given a system ID of **200000000205**
 
 ## Example Code ##
 
