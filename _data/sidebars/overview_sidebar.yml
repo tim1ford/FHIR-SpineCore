@@ -42,7 +42,7 @@ entries:
         output: web
         subfolderitems:
         - title: Error Codes
-          url: /explore_api_codes.html
+          url: /resources_error_handling.html
           output: web
         - title: Search Parameters
           url: /explore_search_parameters.html
