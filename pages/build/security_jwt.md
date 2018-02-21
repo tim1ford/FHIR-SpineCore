@@ -83,6 +83,8 @@ The Payload section of the JWT shall be populated as follows:
 
 ### JWT Payload Example ###
 
+This is an example of how the JWT might look for an authorized practitioner making a request to view a patient record:
+
 ```json
 {
 	"iss": "https://cas.nhs.uk",
@@ -95,7 +97,6 @@ The Payload section of the JWT shall be populated as follows:
 	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|[ASID]",
 	"requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|[ODSCode]",
 	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|[SDSRoleProfileID]"
-	"requesting_patient": "http://fhir.nhs.net/Id/nhs-number|[NHSNumber]"
 }
 ```
 
