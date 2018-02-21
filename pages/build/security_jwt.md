@@ -135,7 +135,7 @@ Common attributes are as defined in [rfc7519](https://tools.ietf.org/html/rfc751
 *TODO - Review whether we need/can use the endpoint URL in the aud claim? This would require that the URL is a parameter in the Authorisation request, which doesn't seem ideal?*
 
 
-{% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
+{% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_system_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
 
 ## Example JWT for an authorised professional ##
 
