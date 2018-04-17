@@ -56,7 +56,7 @@ Consumer systems SHALL generate an empty signature.
 The final output is three Base64url encoded strings separated by dots (note - there is some canonicalisation done to the JSON before it is Base64url encoded, which the JWT code libraries will do for you).
 
 ```shell
-eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwOi8vZWMyLTU0LTE5NC0xMDktMTg0LmV1LXdlc3QtMS5jb21wdXRlLmFtYXpvbmF3cy5jb20vIy9zZWFyY2giLCJzdWIiOiIxIiwiYXVkIjoiaHR0cHM6Ly9hdXRob3JpemUuZmhpci5uaHMubmV0L3Rva2VuIiwiZXhwIjoxNDgxMjUyMjc1LCJpYXQiOjE0ODA5NTIyNzUsInJlYXNvbl9mb3JfcmVxdWVzdCI6ImRpcmVjdGNhcmUiLCJyZXF1ZXN0ZWRfcmVjb3JkIjp7InJlc291cmNlVHlwZSI6IlBhdGllbnQiLCJpZGVudGlmaWVyIjpbeyJzeXN0ZW0iOiJodHRwOi8vZmhpci5uaHMubmV0L0lkL25ocy1udW1iZXIiLCJ2YWx1ZSI6IjkwMDAwMDAwMzMifV19LCJyZXF1ZXN0ZWRfc2NvcGUiOiJwYXRpZW50LyoucmVhZCIsInJlcXVlc3RpbmdfZGV2aWNlIjp7InJlc291cmNlVHlwZSI6IkRldmljZSIsImlkIjoiMSIsImlkZW50aWZpZXIiOlt7InN5c3RlbSI6IldlYiBJbnRlcmZhY2UiLCJ2YWx1ZSI6IkdQIENvbm5lY3QgRGVtb25zdHJhdG9yIn1dLCJtb2RlbCI6IkRlbW9uc3RyYXRvciIsInZlcnNpb24iOiIxLjAifSwicmVxdWVzdGluZ19vcmdhbml6YXRpb24iOnsicmVzb3VyY2VUeXBlIjoiT3JnYW5pemF0aW9uIiwiaWQiOiIxIiwiaWRlbnRpZmllciI6W3sic3lzdGVtIjoiaHR0cDovL2ZoaXIubmhzLm5ldC9JZC9vZHMtb3JnYW5pemF0aW9uLWNvZGUiLCJ2YWx1ZSI6IltPRFNDb2RlXSJ9XSwibmFtZSI6IkdQIENvbm5lY3QgRGVtb25zdHJhdG9yIn0sInJlcXVlc3RpbmdfcHJhY3RpdGlvbmVyIjp7InJlc291cmNlVHlwZSI6IlByYWN0aXRpb25lciIsImlkIjoiMSIsImlkZW50aWZpZXIiOlt7InN5c3RlbSI6Imh0dHA6Ly9maGlyLm5ocy5uZXQvc2RzLXVzZXItaWQiLCJ2YWx1ZSI6IkcxMzU3OTEzNSJ9LHsic3lzdGVtIjoibG9jYWxTeXN0ZW0iLCJ2YWx1ZSI6IjEifV0sIm5hbWUiOnsiZmFtaWx5IjpbIkRlbW9uc3RyYXRvciJdLCJnaXZlbiI6WyJHUENvbm5lY3QiXSwicHJlZml4IjpbIk1yIl19fX0.
+eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2Nhcy5uaHMudWsiLCJzdWIiOiJodHRwczovL2ZoaXIubmhzLnVrL0lkL3Nkcy1yb2xlLXByb2ZpbGUtaWR8Mzg3NDI5Nzg1MzA5Mjc1IiwiYXVkIjoiaHR0cHM6Ly9jbGluaWNhbHMuc3BpbmVzZXJ2aWNlcy5uaHMudWsiLCJleHAiOjE0Njk0MzY5ODcsImlhdCI6MTQ2OTQzNjY4NywicmVhc29uX2Zvcl9yZXF1ZXN0IjoiZGlyZWN0Y2FyZSIsInNjb3BlIjoicGF0aWVudC8qLnJlYWQiLCJyZXF1ZXN0aW5nX3N5c3RlbSI6Imh0dHBzOi8vZmhpci5uaHMudWsvSWQvYWNjcmVkaXRlZC1zeXN0ZW18MjAwMDAwMDAwMjA1IiwicmVxdWVzdGluZ191c2VyIjoiaHR0cHM6Ly9maGlyLm5ocy51ay9JZC9zZHMtcm9sZS1wcm9maWxlLWlkfDQzODcyOTM4NzQ5MjgifQ.
 ```
 
 NOTE: The final section (the signature) is empty, so the JWT will end with a trailing `.` (this must not be omitted, otherwise it would be an invalid token).
@@ -69,7 +69,7 @@ The Payload section of the JWT shall be populated as follows:
 | Claim | Mandatory | Description | Fixed Value | Dynamic Value |
 |-------|----------|-------------|-------------|------------------|
 | iss | Y | Requesting systems issuer URI | No | Yes |
-| sub | Y | ID for the user on whose behalf this request is being made. Will match either the `requesting_user` or `requesting_patient` | No | Yes |
+| sub | Y | ID for the user on whose behalf this request is being made. Will match either the `requesting_user`, `requesting_patient` (or `requesting_system` for unattended APIs) | No | Yes |
 | aud | Y | API endpoint URL | No | Yes |
 | exp | Y | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
 | iat | Y | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
@@ -83,6 +83,8 @@ The Payload section of the JWT shall be populated as follows:
 
 ### JWT Payload Example ###
 
+This is an example of how the JWT might look for an authorized practitioner making a request to view a patient record:
+
 ```json
 {
 	"iss": "https://cas.nhs.uk",
@@ -95,7 +97,6 @@ The Payload section of the JWT shall be populated as follows:
 	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|[ASID]",
 	"requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|[ODSCode]",
 	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|[SDSRoleProfileID]"
-	"requesting_patient": "http://fhir.nhs.net/Id/nhs-number|[NHSNumber]"
 }
 ```
 
@@ -123,7 +124,7 @@ Common attributes are as defined in [rfc7519](https://tools.ietf.org/html/rfc751
 
 | Attribute Name | Attribute Value Guidance |
 | iss | (Issuer) For tokens issued by the national authentication solution, this will be the URL of that national service. For tokens issued by a different issuer, this will hold the URL for the issuer. |
-| sub | (Subject) An identifier for the person or system that has been authorised for access. In most cases this will be an identifier for a member of staff, identified by a Spine URP ID (see [RBAC](security_rbac.html)) for details. In cases where the API is being accessed by a citizen, this will be the NHS Number of that individual. |
+| sub | (Subject) An identifier for the person or system that has been authorised for access. In most cases this will be an identifier for a member of staff, identified by a Spine URP ID (see [RBAC](security_rbac.html)) for details. In cases where the API is being accessed by a citizen, this will be the NHS Number of that individual. In unattended API calls where authorisation has been granted to a system rather than a user, the system identifier will be used here (i.e. the Spine ASID) |
 | aud | (Audience) The URI for the API Endpoint. This will be the fully qualified endpoint address returned to the Consumer by the [SDS endpoint lookup service](build_endpoints.html) as the value of `nhsMhsEndPoint`. |
 | reason_for_request | This identified the purpose for which the request is being made. This is currently limited to one of the following values: **directcare**, **secondaryuses** or **patientaccess**. |
 | scope | This is a space-separated list of the [scopes](security_scopes.html) authorised for this user. Individual APIs will check this list to establish whether the authorisation grants access to the data being request by the client, and will reject the call if the appropriate scopes have not been granted in the token. |
@@ -132,14 +133,44 @@ Common attributes are as defined in [rfc7519](https://tools.ietf.org/html/rfc751
 | requesting_practitioner | If this authorisation relates to a member of staff, this attribute will hold the Spine URP ID (see [RBAC](security_rbac.html)) for details. In this case, the value of this attribute will match the "sub" attribute value.<br/>The naming system prefix for the URP ID code will be **https://fhir.nhs.uk/Id/sds-role-profile-id**<br/>Where national authorisation is not being used (e.g. where Spine is brokering a call to a local system that has authorised the API access directly), and a national SDS role profile ID can't be used, a local user identifier may be used instead.<br/>The naming system prefix for a local identifier will be a locally-defined URI specific to the system/service that managed the user identities - e.g. **https://my-care-service/Id/user-id**<br/>Where the user has both a local system 'role' as well as a nationally-recognised role, then the latter SHALL be provided. Default usernames (e.g. referring to systems or groups) SHALL NOT be used in this field.<br/>This is likely to be mandatory for APIs used by professionals - the specific API documentation for each API will clarify whether this must be used. | |
 | requesting_patient | If this authorisation relates to a citizen, this attribute will hold the NHS Number of the citizen<br/>The naming system prefix for the NHS Number will be **http://fhir.nhs.net/Id/nhs-number**<br/>This is likely to be mandatory for APIs used by patienrs/citizens - the specific API documentation for each API will clarify whether this must be used. |
 
-*TODO - Review whether we need/can use the endpoint URL in the aud claim? This would require that the URL is a parameter in the Authorisation request, which doesn't seem ideal?*
 
 
-{% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
+{% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_system_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
 
 ## Example JWT for an authorised professional ##
 
-TODO - Add one or more examples here.
+The below is an example of how the JWT might look for a health or social care professional accessing a Spine Clinicals API to retrieve data about a patient:
+
+```json
+{
+	"iss": "https://cas.nhs.uk",
+	"sub": "https://fhir.nhs.uk/Id/sds-role-profile-id|387429785309275",
+	"aud": "https://clinicals.spineservices.nhs.uk",
+	"exp": 1469436987,
+	"iat": 1469436687,
+	"reason_for_request": "directcare",
+	"scope": "patient/*.read",
+	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|4387293874928"
+}
+```
+
+## Example JWT for an "unattended" API call (i.e. with no user identity included) ##
+
+The below is an example of how the JWT might look for an API call between two systems without a specific user context:
+
+```json
+{
+	"iss": "https://cas.nhs.uk",
+	"sub": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"aud": "https://clinicals.spineservices.nhs.uk",
+	"exp": 1469436987,
+	"iat": 1469436687,
+	"reason_for_request": "directcare",
+	"scope": "patient/*.read",
+	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+}
+```
 
 ## Example JWT for an authorised citizen ##
 

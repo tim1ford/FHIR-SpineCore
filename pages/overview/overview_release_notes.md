@@ -13,3 +13,7 @@ Note - versions of this specification follow semantic versioning - minor and pat
 
 First incomplete alpha version of API spec
 
+## 0.2.0-alpha (17th April 2018) ##
+
+Updates to the JWT spec to incorporate unattended system-to-system use-cases
+
