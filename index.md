@@ -18,7 +18,7 @@ Traditionally, the "Spine" has provided national services through a range of mes
 
 There are two main classes of APIs that are covered by this guidance:
 
-- FHIR APIs for national NHS Digital services such as [Visitors and Migrants](http://developer.nhs.uk/apis/vandm), [National Opt-Out]() and the [National Record Locator Service](https://developer.nhs.uk/apis/nrls/).
+- FHIR APIs for national NHS Digital services such as [Visitors and Migrants](http://developer.nhs.uk/apis/vandm), [National Opt-Out](), the [National Record Locator Service](https://developer.nhs.uk/apis/nrls/) and [Reasonable Adjustments](https://developer.nhs.uk/apis/reasonable-adjustments/)
 - FHIR APIs in external systems brokered through the Spine Secure Proxy such as [GP Connect](https://developer.nhs.uk/apis/gpconnect/).
 
 This specification covers the common functionality for all the above nationally defined APIs processed through the Spine.
