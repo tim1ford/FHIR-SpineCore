@@ -17,11 +17,11 @@ There is a general overview of the processes around registering new staff throug
 
 The below sections will define the technical interactions and APIs used for authentication in more detail.
 
-# Overall Authentication / Authorisation Process #
+## Overall Authentication / Authorisation Process ##
 
 The below diagram shows the interactions between the various components used to authenticate and authorise users using the current CIS services:
 
-
+![Authentication / Authorisation Process Sequence Diagram](images/legacy/SpineLegacyAuthentication.gif)
 
 The steps shown in the diagram are detailed below.
 
@@ -32,13 +32,11 @@ The steps shown in the diagram are detailed below.
 | 3    | The SSB Service validates the User credentials and, if successful, establishes a Session.     |
 | 4    | SSB returns details of the session to the IA, including properties such as the Unique User ID (UID), a Token ID and other Session attributes, e.g. max_idle_time |
 | 4b   | The roles associated with the user are also returned to the IA, and if there are multiple roles the IA will prompt the user to select the role they are acting in for the duration of the login session |
-| 5    | A Token ID is passed back to the IA and stored in memory on User’s PC. This is a pointer to the SSO Token held in the Identity Server. |
-| 6    | User starts an application, which obtains the Token ID from the IA (See **Ticket API** below). |
-| 7    | The healthcare application can validate the token passed in, and establish a new SSO session for the user, associated with the healthcare application **IS THIS RIGHT?** (See **Access Manager API - Activate** below).
-| 8    | The healthcare application can subsequently validate that the SSO session is valid and is still active (See **Access Manager API - Validate** below). |
-| 8    | The healthcare application can then call the SSB SAML endpoint to retrieve attributes about the user and role (see [Authorisation and Roles](legacy_authorisation))
+| 5    | User starts an application, which obtains the Token ID from the IA (See **Ticket API** below). |
+| 6    | The healthcare application can use the Token to validate that the SSO session is valid and is still active on the Spine (See **Access Manager API** below). |
+| 7    | The healthcare application can then call the SSB SAML endpoint to retrieve attributes about the user and role (see [Authorisation and Roles](legacy_authorisation))
 
-# Identity Agent #
+## Identity Agent ##
 
 The latest version (and all previous versions) of the Identity Agent can be downloded from [here](http://nww.hscic.gov.uk/dir/downloads/) (N3 connection required).
 
@@ -53,7 +51,7 @@ The Identity Agent deals with all the Authentication interactions between the sm
 
 The new [NHS Identity platform](https://developer.nhs.uk/apis/national-authentication/) will be implementing a new standards-based Authentication endpoint, which will use OpenID Connect standards. These are commonly used in many platforms and libraries, so should make authentication across a wide range of platforms and technologies much easier. Once this has been fully rolled out and adopted in client systems, the Identity Agent will no longer be required, and the APIs on this page will no longer need to be used. The new NHS Identity service will however continue to support these APIs for backwards-compatibility for some time to come.
 
-## Ticket API ##
+### Ticket API ###
 
 This is an API exposed on the Identity Agent on the user's machine. Code libraries are distributed with the identity agent to allow the API to be accessed from C or Java code on the client.
 
@@ -64,9 +62,24 @@ The APIs provide the following methods that can be called by clients:
 - **getTicketNoAuth()**: If a ticket is available (from an existing login session), this is returned. Otherwise no value is returned. This method will not prompt the user to authenticate themselves if a session is not already active.
 
 The below sample code shows how to call the API from a Java application:
+
 ```
-TBC
+import com.gemplus.gemauth.api.GATicket;
+
+public class AuthenticateExample {
+	public void authenticate() throws Exception {
+		GATicket gat = new GATicket();
+		String ticket = gat.getTicket();
+		Log.info("Ticket returned by identity agent: '" + ticket + "'");
+	}
+}
 ```
+
+### PKCS#11 API ###
+
+This is an API exposed on the Identity Agent on the user's machine. Code libraries are distributed with the identity agent to allow the API to be accessed from C or Java code on the client.
+
+The [PKCS#11 API](https://en.wikipedia.org/wiki/PKCS_11) (also known as Cryptoki) was originally developed by RSA and provides applications with an interface for a wide variety of cryptographic capabilities using hardware security modules such as, but not limited to, smart cards. A common use-case for this API is for the purposes of the Content Commitment. The API  provides the ability to digitally sign information based on an asymmetric private key and associated digital certificate stored on the user's smart card. This functionality is currently used in systems dealing with electronic prescriptions to allow the prescriptions to be digitally signed using the user's smartcard.
 
 ## Access Manager API ##
 
@@ -78,20 +91,6 @@ This is an API exposed by the SSB on the Spine. Libraries that can be used to ca
 
 ### SSO Session Validate ###
 
-
-
-## PKCS#11 API ##
-
-This is an API exposed on the Identity Agent on the user's machine. Code libraries are distributed with the identity agent to allow the API to be accessed from C or Java code on the client.
-
-The PKCS#11 API (also known as Cryptoki) was originally developed by RSA and provides applications with an interface for a wide variety of cryptographic capabilities using hardware security modules such as, but not limited to, smart cards. A common use-case for this API is for the purposes of the Content Commitment. The API  provides the ability to digitally sign information based on an asymmetric private key and associated digital certificate stored on the user's smart card. This functionality is currently used in systems dealing with electronic prescriptions to allow the prescriptions to be digitally signed using the user's smartcard.
-
-# Passing User Context into National API calls #
-
-## Legacy Messaging ##
-
-
-## FHIR APIs ##
 
 
 
