@@ -133,6 +133,9 @@ entries:
     - title: Authorisation and Roles
       url: /legacy_authorisation.html
       output: web
+    - title: SAML Example
+      url: /saml_example.html
+      output: web
     - title: MiM Messaging
       url: /mim_messaging.html
       output: web

@@ -25,9 +25,11 @@ This can be accessed using a simple HTTP GET request to the role assertion URL. 
 HTTP GET https://[SSB Role assertion URL]/saml/RoleAssertion?token=[TOKEN_ID]
 ```
 
-The TOKEN_ID above is the token returned from the "Get Ticket" API described on the [authentication page](smartcards.html).
+The TOKEN_ID above is the token returned from the "Get Ticket" API described on the [authentication page](smartcards.html) - this will need to be url encoded as it is likely to include characters that can't be put into a URL.
 
-If the SSO session is active on the Spine, the response to the above should be a SAML assertion.
+If the SSO session is active on the Spine, the response to the above should be a SAML assertion (a block of XML).
+
+You can see a full example [here](saml_example.html).
 
 The SAML assertion is a flat file that presents name/value pairs. When an attribute value is empty then no name/value pair will be displayed. The SAML assertion is formed in three parts:
 
@@ -59,9 +61,30 @@ There will be one person block with the following name/value pairs:
 
 ### Job Role Profile Blocks ###
 
+There will be a job role profile block for role profile assigned to the user by the registration agent. Information about each Job Role is taken from the [SDS directory](build_directory.html) "Organisation Person" and "Role Profile" entries for the user.
 
-To be completed
+The hierarchical nature of Job Role profiles is represented in a flat file structure by combining attributes from each level of the hierarchy into a single name/value pair:
 
+| Name                     | LDAP Attribute            | Cardinality |
+| ------------------------ | ------------------------- | ----------- |
+| NHS Organisation         | nhsIDCode                 | 1           |
+| Organisation Name        | o                         | 1           |
+| Job Role                 | nhsJobRole                | 1           |
+| Areas of Work            | nhsAreaOfWork             | 0..*        |
+| Work Groups              | nhsWorkGroups             | 0..*        |
+| Areas of Work Codes      | nhsAreaOfWorkCodes        | 0..*        |
+| Business Functions       | nhsBusinessFunctions      | 0..*        |
+| Work Groups Codes        | nhsWorkGroupsCodes        | 0..*        |
+| Job Role Code            | nhsJobRoleCode            | 1           |
+| Role Profile Code        | uniqueIdentifier          | 1           |
+| Business Functions Codes | nhsBusinessFunctionsCodes | 0..*        |
+
+Notes:
+- The order of attributes within the block is not important. Consuming applications should NOT be coded to take order into account. They should extract each role profile block and then extract the required attributes from it.
+- The date format for nhsOrgOpenDate and nhsOrgCloseDate is YYYYMMDD
+- An nhsPersonStatus <> 1 means that the person is inactive
+- The presence of an nhsIDCode attribute (which is mandatory) can be used to determine the start of a Job Role Block. This is the key field to use when parsing the Job Roles structure into individual Job Role Blocks
+- Workgroups are associated with individual Job Roles by parsing the Job Role structure; the nhsWorkGroupsCodes attribute (optional) shows which Work Groups the Job Role is a member of
 
 ## Passing User Context into National API calls ##
 

@@ -27,7 +27,7 @@ The information contained in each branch is:
 Data about the organisational structure of the NHS - taken from the Organisation Data Service (note, these are the "legal" organisations rather than business services available to patients). The directory on Spine contains the following types of organisation entity:
 
 - ou=Organisations
-	- Organisation
+	- Organisation (nhsOrg)
 	- Organisation Site
 	- Department
 
@@ -38,9 +38,9 @@ Typically, consumers are likely to find it easier to consume organisation data f
 The people branch contains data about all the users of the Spine. This data is confirmed by the Registration Authority during the user registration process and issuance of the user’s smartcard. The structure of the People branch is as follows:
 
 - ou=People
-	- Person
-		- Organisational Person
-			- Role Profile
+	- Person (nhsPerson)
+		- Organisational Person (nhsOrgPerson)
+			- Role Profile (nhsOrgPersonRole)
 
 Each Spine user has one entry immediately beneath the people branch. This entry contains all the data that is independent of an organisation e.g. first and family names. 
 
@@ -53,8 +53,8 @@ Located beneath each specific organisational person entry are entries for each r
 The services branch contains data about Accredited Systems and Message Handling Systems registered with the Spine. The structure of the Services branch is as follows:
 
 - ou=Services
-	- Accredited System
-	- Message Handling System
+	- Accredited System (nhsAs)
+	- Message Handling System (nhsMhs)
 
 The accredited system entry type contains all the information related to a specific system: 
 

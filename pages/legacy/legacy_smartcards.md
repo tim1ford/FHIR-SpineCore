@@ -83,14 +83,9 @@ The [PKCS#11 API](https://en.wikipedia.org/wiki/PKCS_11) (also known as Cryptoki
 
 ## Access Manager API ##
 
-This is an API exposed by the SSB on the Spine. Libraries that can be used to call these APIs are available [here] **LINK TO BE FOUND**
+This is an API exposed by the SSB on the Spine.
 
-**Need input from Joe or someone from CIS on this one as the EIS content is unclear. Do we have new libraries? Can the API be called directly without a client-side library?**
-
-### SSO Session Activate ###
-
-### SSO Session Validate ###
-
+Details to be confirmed.
 
 
 
