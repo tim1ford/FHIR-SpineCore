@@ -28,14 +28,11 @@ entries:
     - title: Overview
       url: /explore.html
       output: web
-    - title: Spine Operation Outcome
+    - title: Operation Outcome
       url: /api_spine-operationoutcome.html
       output: web
     - title: Capability Statement
       url: /api_foundation_capabilitystatement.html
-      output: web
-    - title: ValueSet
-      url: /api_foundation_valueset.html
       output: web
       subfolders:
       - title: API Guidance | FHIR&reg;
