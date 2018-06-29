@@ -48,25 +48,7 @@ The FHIR Resources described in the Explore section of this implementation guide
 
 ## 3. Resource API's ##
 
-This section looks at the common Spine FHIR Resources covered within this implementation guide.
-
-<table style="min-width:100%;width:100%">
-<tr id="clinical">
-<th style="width:33%;">Clinical</th>
-<th style="width:33%;">&nbsp;</th>
-<th style="width:33%;">&nbsp;</th>
-</tr>
-<tr id="clinicald">
-<th>Summary</th>
-<th style="width:33%;">&nbsp;</th>
-<th style="width:33%;">&nbsp;</th>
-</tr>
-<tr>
-<td><a href="api_spine-operationoutcome.html">Spine-OperationOutcome</a></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</table> 
+This section looks at the common Spine FHIR Resources covered within this implementation guide. Most FHIR resources are specific to the API domain, so will be described in the relevant API specification, but the below are common across all Spine Core APIs:
 
 <table style="min-width:100%;width:100%">
 <tr id="conformance">
@@ -76,12 +58,12 @@ This section looks at the common Spine FHIR Resources covered within this implem
 </tr>
 <tr id="conformanced">
 <th>Conformance</th>
-<th>Terminology</th>
+<th>Other</th>
 <th>&nbsp;</th>
 </tr>
 <tr>
 <td><a href="api_foundation_capabilitystatement.html">Capability Statement</a></td>
-<td><a href="api_foundation_valueset.html">ValueSet</a></td>
+<td><a href="api_spine-operationoutcome.html">Spine-OperationOutcome</a></td>
 <td>&nbsp;</td>
 </tr>
 </table>
