@@ -7,8 +7,6 @@ permalink: api_foundation_capabilitystatement.html
 summary: A value set specifies a set of codes drawn from one or more code systems.
 ---
 
-{% include custom/search.warnbanner.html %}
-
 {% include custom/fhir.referencemin.html resource="[Capability Statement](https://fhir.nhs.uk/STU3/StructureDefinition/NHSDigital-CapabilityStatement-1)" page="" fhirlink="[Capability Statement](https://www.hl7.org/fhir/capabilitystatement.html)" content="User Stories" userlink="" %}
 
 

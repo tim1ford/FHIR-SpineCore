@@ -7,8 +7,6 @@ permalink: explore.html
 summary: "Overview of the Resources section"
 ---
 
-{% include custom/search.warnbanner.html %}
-
 ## 1. Pre-Requisites ##
 
 The [general policies](https://developer.nhs.uk/apis/fhir-policy) on the use and implementation of national FHIR APIs MUST be followed.
