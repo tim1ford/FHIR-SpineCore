@@ -6,7 +6,6 @@ sidebar: overview_sidebar
 permalink: api_spine-operationoutcome.html
 summary: A collection of error, warning or information messages that result from a system action.
 ---
-{% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.referencemin.html resource="[Spine-OperationOutcome](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)" page="" fhirlink="[Operation Outcome](https://www.hl7.org/fhir/operationoutcome.html)" content="User Stories" userlink="" %}
 
