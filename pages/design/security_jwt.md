@@ -201,14 +201,4 @@ In the above example:
 - The application developer has reviewed the API specification and identified that the scopes required for this data are: **patient/consent.read patient/consent.write**
 - The patient is using an application that has been reviewed and approved for access to Spine services, and given a system ID of **200000000205**
 
-## Example Code ##
 
-### C# ###
-
-{% include tip.html content="The following code snippet utilise the [Microsoft Identity Model JWT Token Nuget Package](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/) for creating, serializing and validating JWT tokens." %}
-
-TODO
-
-### Java ###
-
-TODO

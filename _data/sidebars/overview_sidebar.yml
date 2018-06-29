@@ -1,7 +1,7 @@
 entries:
 - title: Spine Core FHIR
   product: Spine Core FHIR
-  version: 0.3.0-beta
+  version: 1.0.0-live
   levels: one
   folders:
 
@@ -95,28 +95,27 @@ entries:
         - title: Visitors and Migrants
           url: /integration_example_vandm.html
           output: web
-
       - title: Security
         output: web
         subfolderitems:
-        - title: System-to-System Trust
-          url: /security_tlsma.html
-          output: web
-        - title: User Authentication
-          url: /security_authentication.html
-          output: web
+#        - title: System-to-System Trust
+#          url: /security_tlsma.html
+#          output: web
+#        - title: User Authentication
+#          url: /security_authentication.html
+#          output: web
         - title: National RBAC
           url: /security_rbac.html
           output: web
-        - title: API Authorisation
-          url: /security_authorisation.html
-          output: web
+#        - title: API Authorisation
+#          url: /security_authorisation.html
+#          output: web
         - title: Authorisation Scopes
           url: /security_scopes.html
           output: web
-    - title: Access Tokens and Audit (JWT)
-      url: /security_jwt.html
-      output: web
+        - title: Access Tokens and Audit (JWT)
+          url: /security_jwt.html
+          output: web
 
   - title: Legacy Spine APIs
     output: web
@@ -150,12 +149,12 @@ entries:
 #      url: /test_data.html
 #      output: web
 
-#  - title: Assure
-#    output: web
-#    folderitems:
-#    - title: Overview
-#      url: /assure.html
-#      output: web
+  - title: Assure
+    output: web
+    folderitems:
+    - title: Target Operating Model
+      url: /assure.html
+      output: web
 #    - title: Access
 #      url: /assure_access.html
 #      output: web

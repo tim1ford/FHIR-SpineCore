@@ -7,8 +7,6 @@ permalink: ssp_overview.html
 summary: "Overview of the role of the Spine Secure Proxy (SSP) to broker calls to other health and social care systems."
 ---
 
-*NOTE*: Based on: https://developer.nhs.uk/apis/gpconnect/integration_spine_security_proxy.html
-
 ## Spine Secure Proxy (SSP) ##
 
 The Spine Secure Proxy (SSP) is a forward HTTP proxy which will be used as a front-end to control and protect access to GP principal IT systems that will be exposing FHIR based RESTful APIs as defined by the GP Connect programme.  It provides a single security point for both authentication and authorisation for consuming systems. Additional responsibilities include auditing of all requests, throttling of requests and transaction logging for performance and commercial remuneration purposes. 

@@ -7,8 +7,6 @@ permalink: ssp_implementation_guide.html
 summary: "Technical specification for the Spine Secure Proxy (SSP)."
 ---
 
-*NOTE: Based on https://developer.nhs.uk/apis/gpconnect/integration_spine_security_proxy_implementation_guide.html*
-
 ## Spine Secure Proxy (SSP) Implementation Guide ##
 
 Technical overview of the operation of the Spine Secure Proxy (SSP).
@@ -149,7 +147,7 @@ The inclusion of the consumer systems UserID, user name and date/time of the eve
   
 <sup>3</sup> a table of `InteractionIDs` for each RESTful API can be found in the [Development - FHIR API Guidance - Operation Guidance](development_fhir_operation_guidance.html) page.
 
-<sup>4</sup> an example of a valid JSON Web Token (JWT) for the purposes of GP Connect can be found in the [Cross Organisation Audit & Provenance](integration_cross_organisation_audit_and_provenance.html) guidance.
+<sup>4</sup> an example of a valid JSON Web Token (JWT) for the purposes of GP Connect can be found in the [Access Tokens and Audit](security_jwt.html) guidance.
 
 {% include important.html content="Note that according to [RFC 7230, section 3.2](https://tools.ietf.org/html/rfc7230) all HTTP header fields names are case insensitive and should be handled as such." %}
 
@@ -254,7 +252,7 @@ The inclusion of the consumer systems UserID, user name and date/time of the eve
 - Request and response HTTP payloads SHALL NOT be modified, as this would require the proxy to have detained knowledge of payload structure and transport encoding. Furthermore, payload modification may introduce problems with asserting digital signatures/payload provenance in the future.
 - Request and response HTTP headers SHALL NOT be modified.
 - The proxy SHOULD validate and SHALL log for audit purposes user and system claims provided in the HTTP authorization header as an oAuth bearer token (as outlined in [RFC 6749](https://tools.ietf.org/html/rfc6749)) in the form of a JSON Web Token (JWT) as defined in [RFC 7519](https://tools.ietf.org/html/rfc7519).
-	- Refer to the [Cross Organisation Audit & Provenance](integration_cross_organisation_audit_and_provenance.html) implementation guidance for full details.
+	- Refer to the [Access Tokens and Audit](security_jwt.html) implementation guidance for full details.
 - Additional request and response HTTP Headers SHOULD be added into the HTTP request/response for the purposes of security/auditing and debugging/profiling purposes.
 - Additional HTTP response headers SHALL be added into the HTTP response for the purpose of throttling/rate limiting API access.
 - As outlined in [RFC 6585](http://tools.ietf.org/html/rfc6585) HTTP status code 429 SHALL be used to notify consumer systems that their throttling limit has been reached or that the server is experiencing a DoS attack.
