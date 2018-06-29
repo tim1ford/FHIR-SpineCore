@@ -1,36 +1,13 @@
 ---
-title: Assure Overview
-keywords: assure, accredit
+title: Assurance
+keywords: assure
 tags: [overview]
-sidebar: foundations_sidebar
+sidebar: overview_sidebar
 permalink: assure.html
-summary: "These pages assist with requirements gathering and mapping stages of a FHIR API development process."
+summary: "This page gives an introduction to the general approach for assurance for access to Spine services."
 ---
 
-The Assure section contains descriptions of approaches and suggestions for building APIs at the Assure stage.
+The assurance for access to Spine APIs varies depending on the type of API being accessed, and the nature of the data it provides. Refer to individual API specifications for details for a particular API, but in general, most FHIR access to FHIR APIs follows a process which centres around a workbook called the "Target Operating Model" (TOM). This includes a set of requirements and is filled in by both the supplier of the integrating system, and the deploying organisation, and reviewed by NHS Digital prior to any access being granted. This ensures that all integrating systems adhere to a common set of rules to ensure interoperability and compliance with IG rules.
 
-| Page              |  Description    |
-|+---------------------|+--------------------------------+|
-| Access | The access mechanism and of requesting system is influenced by many factors. This section demonstrates the design decisions to consider | 
-| Security | The security of the FHIR payload, access and data at rest are all important design decisions while building an API.  | 
-| End to end | The end to end assurance necessary to deliver an assured API.  | 
+An example description of the TOM process for the Spine PDS Mini Services Provider API can be found [here](https://developer.nhs.uk/library/systems/nhs-digital-smsp-pds/intro/compliance/).
 
-Please see or contribute to support the wider community efforts of providing a completely defined API service.
-
-
-# Providing an API #
-
-The following diagram explains the elements of APIs allowing a the development of APIs:
-
-{% include custom/provide_api.svg %}
-
-NHS Digital is contributing to progressing the profile development (see Overview section).
-
-
-# Contribute #
-
-This site is structured around stakeholders including API users, developers and architects. Please get involved in the journey.
-
-{% include custom/api_overview.svg %}
-
-{% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with careconnect@interopen.org "%}

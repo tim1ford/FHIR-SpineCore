@@ -7,8 +7,6 @@ permalink: pds_overview.html
 summary: "Overview of the role of the Personal Demographic Services (PDS) and ways of accessing it."
 ---
 
-*NOTE: Based on https://developer.nhs.uk/apis/gpconnect/integration_personal_demographic_service.html*
-
 ## PDS Tracing ##
 
 All national APIs that provide data about specific patients require that consuming systems MUST obtain a verified NHS number from the [Personal Demographic Service](https://digital.nhs.uk/Demographics){:target="_blank"} (PDS) to ensure they have correctly identified the patient. This typically involves "tracing" patients using key information such as their Date of Birth, Surname and Gender.

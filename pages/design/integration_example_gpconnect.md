@@ -7,8 +7,6 @@ permalink: integration_example_gpconnect.html
 summary: "Illustration of the use of the GP Connect API showing all interactions required - both with Spine services and GP Connect endpoint API calls."
 ---
 
-*NOTE: Based on https://developer.nhs.uk/apis/gpconnect/integration_illustrated.html*
-
 ## Spine integration required to consume GP Connect capabilities ##
 
 The full details of the GP Connect APIs can be found in the [GP Connect API Specification](https://developer.nhs.uk/apis/gpconnect){:target="_blank"}.

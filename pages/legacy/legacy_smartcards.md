@@ -85,7 +85,5 @@ The [PKCS#11 API](https://en.wikipedia.org/wiki/PKCS_11) (also known as Cryptoki
 
 This is an API exposed by the SSB on the Spine.
 
-Details to be confirmed.
-
-
+{% include note.html content="This page will be updated with details in a future version of this specification." %}
 

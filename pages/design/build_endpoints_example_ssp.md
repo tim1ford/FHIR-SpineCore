@@ -7,8 +7,6 @@ permalink: build_endpoints_example_ssp.html
 summary: "Worked example of looking up a Spine endpoint from SDS for calls brokered through SSP"
 ---
 
-*NOTE*: Based on: https://developer.nhs.uk/apis/gpconnect/integration_spine_directory_service.html
-
 {% include important.html content="All information provided below is indicative and subject to on-going review." %}
 
 ## Worked example of the endpoint lookup process ##
