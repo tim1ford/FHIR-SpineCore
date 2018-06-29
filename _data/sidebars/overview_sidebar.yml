@@ -44,9 +44,6 @@ entries:
         - title: Error Codes
           url: /resources_error_handling.html
           output: web
-        - title: Search Parameters
-          url: /explore_search_parameters.html
-          output: web
         - title: Open Source
           url: /explore_fhir_open_source_guidance.html
           output: web
