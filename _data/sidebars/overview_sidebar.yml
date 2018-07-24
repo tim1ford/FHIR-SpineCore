@@ -1,7 +1,7 @@
 entries:
 - title: Spine Core FHIR
   product: Spine Core FHIR
-  version: 1.0.0-live
+  version: 1.0.1-live
   levels: one
   folders:
 
