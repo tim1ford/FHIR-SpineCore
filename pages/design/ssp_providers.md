@@ -9,7 +9,7 @@ summary: "Requirements for systems wanting to register an API endpoint for consu
 
 {% include important.html content="All information provided below is indicative and subject to on-going review." %}
 
-NOTE: Most of the below currently relates purely to GP Connect APIs as these are the initial APIs being brokered through the SSP. As other CareConnect APIs are implemented, it is intended that these will also be made available through the SSP, at which point this page may be updated with more information to reflect this wider use.
+{% include note.html content="Most of the below currently relates purely to GP Connect APIs as these are the initial APIs being brokered through the SSP. As other CareConnect APIs are implemented, it is intended that these will also be made available through the SSP, at which point this page may be updated with more information to reflect this wider use." %}
 
 ## Provider System Requirements ##
 
