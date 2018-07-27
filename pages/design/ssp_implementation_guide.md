@@ -46,7 +46,7 @@ At a high-level the proxy operates as a content agnostic mediator allowing autho
 | Proxy | HTTPS/TLS Mutual Authentication (MA) enabled proxy with auditing. |
 | Provider | Any system which is capable of servicing HTTPS requests from third-party consumer systems. |
 
-In the First of Type (FoT) instantiation of this system architecture provider systems will be GP principal IT systems from vendors such as (EMIS, TPP, INPS and Microtest), consumer are expected to be a mix of GP principal IT systems and other IT systems. 
+In the First of Type (FoT) instantiation of this system architecture provider systems will be GP principal IT systems from vendors such as (EMIS, TPP, INPS and Microtest), consumers are expected to be a mix of GP principal IT systems and other IT systems. 
 
 As a guiding design principle the Spine Secure Proxy (SSP) SHALL NOT impose any interoperability barriers<sup>1</sup> which would impede FHIR compliant client libraries/applications from communicating with FHIR compliant back-end API services. However, it MAY block consumer communications on security grounds (i.e. a consumer attempting to access a provider for which it doesn’t have permission).
 
@@ -96,7 +96,7 @@ It is expected that for phase 1 delivery a number of supporting systems won’t 
 As such it is planned that the following mitigations will be implemented as part of phase 1:
 
 - Retrieving patient demographics and NHS number (step 1) will have been performed by the consumer system using a PDS or SMSP trace.
-- The Record Location (step 2) and Endpoint Location (step 3a) will be performed internally by the consumer system using the patient’s GP organisational identifier as returned from a PDS lookup with the endpoint look-up being performed via a direct LDAP query to the [Spine Directory Service (SDS)](integration_spine_directory_service.html).
+- The Record Location (step 2) and Endpoint Location (step 3a) will be performed internally by the consumer system using the patient’s GP organisational identifier as returned from a PDS lookup with the endpoint look-up being performed via a direct LDAP query to the [Spine Directory Service (SDS)](build_endpoints_example_ssp.html).
 - The Patient Preferences Repository (step 5) will not be checked.
 - An interim Data Sharing Agreement Repository (Step 6), implemented by the SSP,  will be checked.
 
@@ -147,7 +147,7 @@ The inclusion of the consumer systems UserID, user name and date/time of the eve
   
 <sup>3</sup> a table of `InteractionIDs` for each RESTful API can be found in the [Development - FHIR API Guidance - Operation Guidance](development_fhir_operation_guidance.html) page.
 
-<sup>4</sup> an example of a valid JSON Web Token (JWT) for the purposes of GP Connect can be found in the [Access Tokens and Audit](security_jwt.html) guidance.
+<sup>4</sup> an example of a valid JSON Web Token (JWT) for the purposes of GP Connect can be found in the [Access Tokens and Audit](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_cross_organisation_audit_and_provenance.html#jwt-payload-example) guidance.
 
 {% include important.html content="Note that according to [RFC 7230, section 3.2](https://tools.ietf.org/html/rfc7230) all HTTP header fields names are case insensitive and should be handled as such." %}
 
@@ -252,7 +252,7 @@ The inclusion of the consumer systems UserID, user name and date/time of the eve
 - Request and response HTTP payloads SHALL NOT be modified, as this would require the proxy to have detained knowledge of payload structure and transport encoding. Furthermore, payload modification may introduce problems with asserting digital signatures/payload provenance in the future.
 - Request and response HTTP headers SHALL NOT be modified.
 - The proxy SHOULD validate and SHALL log for audit purposes user and system claims provided in the HTTP authorization header as an oAuth bearer token (as outlined in [RFC 6749](https://tools.ietf.org/html/rfc6749)) in the form of a JSON Web Token (JWT) as defined in [RFC 7519](https://tools.ietf.org/html/rfc7519).
-	- Refer to the [Access Tokens and Audit](security_jwt.html) implementation guidance for full details.
+	- Refer to the [Access Tokens and Audit](security_jwt.html) implementation guidance for full details. GP Connect consumers should refer to [GP Connect - Cross organisation audit and provenance](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_cross_organisation_audit_and_provenance.html)
 - Additional request and response HTTP Headers SHOULD be added into the HTTP request/response for the purposes of security/auditing and debugging/profiling purposes.
 - Additional HTTP response headers SHALL be added into the HTTP response for the purpose of throttling/rate limiting API access.
 - As outlined in [RFC 6585](http://tools.ietf.org/html/rfc6585) HTTP status code 429 SHALL be used to notify consumer systems that their throttling limit has been reached or that the server is experiencing a DoS attack.

@@ -15,7 +15,7 @@ The Spine Secure Proxy (SSP) is a forward HTTP proxy which will be used as a fro
 
 ### Proxied FHIR Requests ###
 
-For First of Type (FoT) implementations FHIR endpoint location will be performed internally by the consumer system utilising the patient’s GP organisational identifier (i.e. ODSCode as returned from a separate PDS lookup process) with the provider's server endpoint being resolved via LDAP queries to the [Spine Director Service (SDS)](integration_spine_directory_service.html).
+For First of Type (FoT) implementations FHIR endpoint location will be performed internally by the consumer system utilising the patient’s GP organisational identifier (i.e. ODSCode as returned from a separate PDS lookup process) with the provider's server endpoint being resolved via LDAP queries to the [Spine Directory Service (SDS)](build_directory.html).
 
 {% include important.html content="All HTTP communications are expected to be secured using TLS MA. This includes both legs of the request, from consumer system to the proxy and then from the proxy to provider system." %}
 
@@ -36,6 +36,6 @@ A numder of Spine specific HTTP headers also need to be populated with the inten
 | `Ssp-To`             | Provider's ASID |
 | `Ssp-InteractionID`  | Spine's InteractionID |
 
-Please refer to the [Spine Security Proxy Implementation Guide](integration_spine_security_proxy_implementation_guide.html) for full technical details.
+Please refer to the [Spine Security Proxy Implementation Guide](ssp_implementation_guide.html) for full technical details.
 
 Furthermore, the consumer's client certificate is validated to ensure it includes valid certificate `CN` and `DN` details and that the certificate has not been added to the certificate revocation list (CRL).

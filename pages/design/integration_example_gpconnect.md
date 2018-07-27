@@ -13,9 +13,9 @@ The full details of the GP Connect APIs can be found in the [GP Connect API Spec
 
 GP Connect provider APIs are accessed through the NHS Spine. As such, consumers of GP Connect APIs are required to integrate with the following Spine services as a pre-requisite to making API calls to GP Connect provider APIs:
 
-- [Personal Demographics Service (PDS)](integration_personal_demographic_service.html)
-- [Spine Directory Service (SDS)](integration_spine_directory_service.html)
-- [Spine Security Proxy (SSP)](integration_spine_security_proxy.html)
+- [Personal Demographics Service (PDS)](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_personal_demographic_service.html)
+- [Spine Directory Service (SDS)](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_spine_directory_service.html)
+- [Spine Secure Proxy (SSP)](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_spine_secure_proxy.html)
 
 To illustrate this, an example is given below of all the steps required consume GP Connect capabilities. For full details, please refer to the relevant spine service pages.
 
@@ -30,32 +30,32 @@ The steps shown in the diagram are detailed below.
 | Step | Description |
 |------|-------------|
 |      | *Step 1 is optional in the sense that a cached version of a previous these trace results may be available to the consumer.* |    
-| 1a   | **Consumer** is responsible for performing a  [Personal Demographics Service(PDS)](pds_overview.html) Trace to both verify the NHS Number and obtain the ODS code of the GP Practice system. |
+| 1a   | **Consumer** is responsible for performing a  [Personal Demographics Service(PDS)](https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_personal_demographic_service.html) Trace to both verify the NHS Number and obtain the ODS code of the GP Practice system. |
 | 1b   | **PDS** returns NHS Number verification status, and the ODS code of the GP Practice system. |
 |      |      |
 |      | *Step 2 is optional in the sense that cached or configured endpoint details for the Practice may be available from a previous SDS interaction.* |    
-| 2a   | **Consumer** calls [Spine Directory Service (SDS)](build_endpoints_example_ssp.html) to discover the Accredited System ID (ASID) of the system which provides a FHIR endpoint at the practice identified by the specified ODS code. |
+| 2a   | **Consumer** calls [Spine Directory Service (SDS)]((https://developer.nhs.uk/apis/gpconnect-1-2-0/integration_spine_directory_service.html) to discover the Accredited System ID (ASID) of the system which provides a FHIR endpoint at the practice identified by the specified ODS code. |
 | 2b   | **SDS** returns the ASID. | 
 | 2c   | **Consumer** calls Spine Directory Service again to discover the URL of the FHIR server endpoint at the practice | 
 | 2d   | **SDS** returns details of the FHIR endpoint. | 
 |      |      |
 |      | *Step 3 is optional in the sense that the Capability Statement may be used to verify the FHIR capabilities which the endpoint provides should this be required at run time. The results of this call may be cached for future interactions.* |    
-| 3a   | **Consumer** calls the [metadata endpoint](https://developer.nhs.uk/apis/gpconnect/foundations_use_case_get_the_fhir_capability_statement.html){:target="_blank"} at the practice FHIR server to request full details of which FHIR operations are implemented at that server - the Capability Statement. |
+| 3a   | **Consumer** calls the [metadata endpoint](https://developer.nhs.uk/apis/gpconnect-1-2-0/foundations_use_case_get_the_fhir_capability_statement.html){:target="_blank"} at the practice FHIR server to request full details of which FHIR operations are implemented at that server - the Capability Statement. |
 | 3b   | **Spine Security Proxy (SSP)** receives the call from the Consumer, performs security checks, and if these pass, forwards the consumer request to the provider. |
 | 3c   | **Provider** returns the Capability Statement to the SSP. |
 | 3d   | **SSP** forwards the Capability Statement received from the Provider to the Consumer. |
 |      |      |
-| 4a   | **Consumer** then makes an API call to [Search for free slots](https://developer.nhs.uk/apis/gpconnect/appointments_use_case_search_for_free_slots.html){:target="_blank"} at the practice in the specified time-frame. |
+| 4a   | **Consumer** then makes an API call to [Search for free slots](https://developer.nhs.uk/apis/gpconnect-1-2-0/appointments_use_case_search_for_free_slots.html){:target="_blank"} at the practice in the specified time-frame. |
 | 4b   | **SSP** forwards the call from the Consumer, performs security checks, and if these pass, forwards the consumer request to the provider. |
-| 4c   | **Provider** responds with details of what slots are available for booking. Should no applicable slots be returned, the consumer may make repeated calls to [Search for free slots](https://developer.nhs.uk/apis/gpconnect/appointments_use_case_search_for_free_slots.html){:target="_blank"} with amended date ranges. |
+| 4c   | **Provider** responds with details of what slots are available for booking. Should no applicable slots be returned, the consumer may make repeated calls to [Search for free slots](https://developer.nhs.uk/apis/gpconnect-1-2-0/appointments_use_case_search_for_free_slots.html){:target="_blank"} with amended date ranges. |
 | 4d   | **SSP** forwards the free slots received from the Provider to the Consumer. |   
 |      |      |
-| 5a   | **Consumer** makes API call to [Find a patient](https://developer.nhs.uk/apis/gpconnect/foundations_use_case_find_a_patient.html){:target="_blank"} providing the patient's NHS Number. |
+| 5a   | **Consumer** makes API call to [Find a patient](https://developer.nhs.uk/apis/gpconnect-1-2-0/foundations_use_case_find_a_patient.html){:target="_blank"} providing the patient's NHS Number. |
 | 5b   | **Spine Security Proxy (SSP)** receives the call from the Consumer, performs security checks, and if these pass, forwards the consumer request to the provider. |
-| 5c   | **Provider** finds patient record and returns the logical identifier of the patient record at this practice in their system. See [Patient record not present](https://developer.nhs.uk/apis/gpconnect/appointments_consumer_sessions.html#consumer-session---booking-an-appointment---no-patient-record){:target="_blank"} for an illustration of the steps required in this case. |
+| 5c   | **Provider** finds patient record and returns the logical identifier of the patient record at this practice in their system. See [Patient record not present](https://developer.nhs.uk/apis/gpconnect-1-2-0/appointments_consumer_sessions.html#consumer-session---booking-an-appointment---no-patient-record){:target="_blank"} for an illustration of the steps required in this case. |
 | 5d   | **SSP** forwards the Patient details received from the Provider to the Consumer |
 |      |      |
-| 6a   | **Consumer** calls [Book an appointment](https://developer.nhs.uk/apis/gpconnect/appointments_use_case_book_an_appointment.html){:target="_blank"} indicating the slots selected in the UI together with the logical ID of the patient. |
+| 6a   | **Consumer** calls [Book an appointment](https://developer.nhs.uk/apis/gpconnect-1-2-0/appointments_use_case_book_an_appointment.html){:target="_blank"} indicating the slots selected in the UI together with the logical ID of the patient. |
 | 6b   | **Spine Security Proxy (SSP)** forwards the call from the Consumer, performs security checks, and if these pass, forwards the consumer request to the provider. |
 | 6c   | **Provider** responds with details of the booked appointment as confirmation of success. |
 | 6d   | **SSP** forwards the Appointment details received from the Provider to the Consumer. |
