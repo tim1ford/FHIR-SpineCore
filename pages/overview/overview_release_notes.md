@@ -9,7 +9,7 @@ summary: Summary release notes of the versions released in API Implementation Gu
 
 Note - versions of this specification follow semantic versioning - minor and patch versions should be considered as non-breaking.
 
-## 1.0.1-live (TBC: 31st July 2018) ##
+## 1.0.1-live (3rd August 2018) ##
 
 - Update to SSP system topologies
 - Minor updates fixing broken links 
