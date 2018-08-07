@@ -1,7 +1,7 @@
 entries:
 - title: Spine Core FHIR
   product: Spine Core FHIR
-  version: 1.0.1-live
+  version: 1.1-draft
   levels: one
   folders:
 
@@ -34,17 +34,29 @@ entries:
     - title: Capability Statement
       url: /api_foundation_capabilitystatement.html
       output: web
-      subfolders:
-      - title: API Guidance | FHIR&reg;
-        output: web
-        subfolderitems:
-        - title: Error Codes
-          url: /resources_error_handling.html
-          output: web
-        - title: Open Source
-          url: /explore_fhir_open_source_guidance.html
-          output: web
-          
+    - title: Resource Versioning
+      url: /resources_versioning.html
+      output: web
+
+  - title: Interactions
+    output: web
+    folderitems:
+    - title: Create
+      url: /create.html
+      output: web
+    - title: Read
+      url: /read.html
+      output: web
+    - title: Update
+      url: /update.html
+      output: web
+    - title: Delete
+      url: /delete.html
+      output: web
+    - title: Search
+      url: /search.html
+      output: web
+
   - title: Design & Build
     output: web
     folderitems:
@@ -98,6 +110,9 @@ entries:
       - title: Security
         output: web
         subfolderitems:
+        - title: Spine Interaction IDs
+          url: /security_interaction_ids.html
+          output: web
 #        - title: System-to-System Trust
 #          url: /security_tlsma.html
 #          output: web
@@ -116,6 +131,15 @@ entries:
         - title: Access Tokens and Audit (JWT)
           url: /security_jwt.html
           output: web
+    - title: HTTP Headers
+      url: /resources_headers.html
+      output: web
+    - title: Error Handling
+      url: /resources_error_handling.html
+      output: web
+    - title: Open Source
+      url: /explore_fhir_open_source_guidance.html
+      output: web
 
   - title: Legacy Spine APIs
     output: web

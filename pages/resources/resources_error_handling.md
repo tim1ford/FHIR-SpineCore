@@ -13,11 +13,12 @@ In the event of an error, provider systems SHALL respond by providing an [Operat
 
 The OperationOutcome:
 
-- SHALL contain a definition of severity in the `OperationOutcome.issue.severity` field providing a value from the [valueset-issue-severity](http://hl7.org/fhir/STU3/valueset-issue-severity.html) value set. In all cases described in this guidance, the value used will be `error`.
+- SHALL contain a definition of severity in the `OperationOutcome.issue.severity` field providing a value from the [valueset-issue-severity](http://hl7.org/fhir/STU3/valueset-issue-severity.html) value set. The cases described below will specify the value to use for each outcome.
 - SHALL contain a definition of the type of error in the `OperationOutcome.issue.code` element, providing a value from the [issue-type](http://hl7.org/fhir/STU3/valueset-issue-type.html) value set. 
 - SHALL contain details of the `Spine error code` in the `OperationOutcome.issue.details.coding.code` and `OperationOutcome.issue.details.coding.display` fields. These shall be taken from the standard set of NHS Spine error codes as defined in the [spine-error-or-warning-code-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1) value set. The Spine error and warning codes provide a greater degree of error handling granularity, and also ensure a standardised error handling approach across NHS APIs. 
 - SHOULD provide additional diagnostic details of the error in `OperationOutcome.diagnostics` property where such securely provides additional error context for consumer applications.
 
+NOTE: OperationOutcome resources returned by Spine will always have an ID element, which can be used by the Spine team if necessary during testing to trace the error and troubleshoot why it occurred. Errors returned from external systems (e.g. brokered calls into GP systems) MAY also contain an ID element.
 
 The specific errors that can be returned will depend on the API being called, and the individual API specifications will provide additional details about likely error conditions. The sections below provide general guidance on the error details that can come back from national FHIR APIs, and those brokered nationally.
 
@@ -296,6 +297,7 @@ When the Spine security proxy cannot or will not process a request then one of t
 ```json
 {
 	"resourceType": "OperationOutcome",
+	"id": "eb9e0b95-4eea-4654-ab2d-d6ef9e86cc3a",
 	"issue": [{
 		"severity": "error",
 		"code": "forbidden",
@@ -309,6 +311,7 @@ When the Spine security proxy cannot or will not process a request then one of t
 ```json
 {
 	"resourceType": "OperationOutcome",
+	"id": "eb9e0b95-4eea-4654-ab2d-d6ef9e86cc3a",
 	"issue": [{
 		"severity": "error",
 		"code": "not-supported",
@@ -322,6 +325,7 @@ When the Spine security proxy cannot or will not process a request then one of t
 ```json
 {
 	"resourceType": "OperationOutcome",
+	"id": "eb9e0b95-4eea-4654-ab2d-d6ef9e86cc3a",
 	"issue": [{
 		"severity": "error",
 		"code": "not-supported",
@@ -336,6 +340,7 @@ When the Spine security proxy cannot or will not process a request then one of t
 ```json
 {
 	"resourceType": "OperationOutcome",
+	"id": "eb9e0b95-4eea-4654-ab2d-d6ef9e86cc3a",
 	"issue": [{
 		"severity": "error",
 		"code": "transient",
@@ -349,6 +354,7 @@ When the Spine security proxy cannot or will not process a request then one of t
 ```json
 {
 	"resourceType": "OperationOutcome",
+	"id": "eb9e0b95-4eea-4654-ab2d-d6ef9e86cc3a",
 	"issue": [{
 		"severity": "error",
 		"code": "transient",
