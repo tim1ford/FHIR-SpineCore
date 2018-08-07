@@ -12,11 +12,11 @@ Note - versions of this specification follow semantic versioning - minor and pat
 ## 1.1-draft ##
 
 - Added an interactions section to define the main CRUD and search operations for ReST APIs
-- Added a page covering Spine Sevice and Interaction IDs
-- Added a page covering all HTTP headers used in Spine FHIR APIs
-- Added a page covering resource versioning and caching
+- Added a page covering Spine [Interaction IDs](security_interaction_ids.html)
+- Added a page covering all [HTTP headers](resources_headers.html) used in Spine FHIR APIs
+- Added a page covering [resource versioning](resources_versioning.html)
 - Reorganised left nav slightly to make it a bit easier to navigate
-- Minor changes to error codes page to clarify issue severity
+- Minor changes to [error handling](resources_error_handling.html) page to clarify issue severity
 
 ## 1.0.1-live (3rd August 2018) ##
 
