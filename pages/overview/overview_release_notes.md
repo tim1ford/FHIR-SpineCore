@@ -9,6 +9,15 @@ summary: Summary release notes of the versions released in API Implementation Gu
 
 Note - versions of this specification follow semantic versioning - minor and patch versions should be considered as non-breaking.
 
+## 1.1-draft ##
+
+- Added an interactions section to define the main CRUD and search operations for ReST APIs
+- Added a page covering Spine Sevice and Interaction IDs
+- Added a page covering all HTTP headers used in Spine FHIR APIs
+- Added a page covering resource versioning and caching
+- Reorganised left nav slightly to make it a bit easier to navigate
+- Minor changes to error codes page to clarify issue severity
+
 ## 1.0.1-live (3rd August 2018) ##
 
 - Update to SSP system topologies
