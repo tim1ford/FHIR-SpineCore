@@ -48,7 +48,7 @@ In addition to the FHIR&reg; standard headers, the Spine requires some additiona
 | HTTP Header                   | Mandatory/Optional       | Description                                                                   |
 |-------------------------------|--------------------------|-------------------------------------------------------------------------------|
 | ```Authorization```           | Mandatory                | This is an OAuth bearer token with details of the user, system and organisation context (see [Access Tokens and Audit](security_jwt.html)) |
-| ```FromASID```               | Mandatory                | The Accredited System ID of the client (see [Spine Endpoints](build_endpoints.html)) |
+| ```FromASID```               | Mandatory                | The Accredited System ID of the client (see [Spine Endpoints](build_endpoints.html)).<br/>NOTE: This MUST match the value of the requesting_system claim (with an added identifier prefix - see [JWT](security_jwt.html)) |
 | ```ToASID```                 | Mandatory                | The Accredited System ID of server. For Spine APIs this will be the Spine API, but for calls brokered through the [SSP](ssp_overview.html) this would be the target server ASID |
 | ```InteractionID```          | Mandatory                | This is the system interaction being performed (see [Interaction IDs](security_interaction_ids.html)) |
 

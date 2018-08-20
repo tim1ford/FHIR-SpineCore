@@ -17,6 +17,7 @@ Note - versions of this specification follow semantic versioning - minor and pat
 - Added a page covering [resource versioning](resources_versioning.html)
 - Reorganised left nav slightly to make it a bit easier to navigate
 - Minor changes to [error handling](resources_error_handling.html) page to clarify issue severity
+- Minor changes to [JWT](security_jwt.html) page to clarify use of iss and aud claims, and to add JWT validation rules
 
 ## 1.0.1-live (3rd August 2018) ##
 

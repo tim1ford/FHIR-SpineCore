@@ -22,6 +22,8 @@ NOTE: OperationOutcome resources returned by Spine will always have an ID elemen
 
 The specific errors that can be returned will depend on the API being called, and the individual API specifications will provide additional details about likely error conditions. The sections below provide general guidance on the error details that can come back from national FHIR APIs, and those brokered nationally.
 
+{% include important.html content="Some errors, especially security and low-level transport errors, are generated from low-level services within the Spine infrastructure which are not able to honour the  content-encoding requested by the client. In these cases, OperationOutcome resources may be returned in XML format even if the client has requested JSON." %}
+
 ## Identity validation errors ##
 
 | HTTP code | Issue Severity | Issue type    |Spine error code - code       | Spine error code - display |

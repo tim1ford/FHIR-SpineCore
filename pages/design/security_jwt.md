@@ -26,7 +26,11 @@ It is highly recommended that standard libraries are used for creating the JWT a
 
 ## JWT without an Authorisation Server ##
 
-The new national authentication service is not yet in place, so it is not currently possible to request an Access token from that service. In the interim, Consumer systems are expected to either use a local service to generate tokens, or generate a new JWT for each API request themselves. A consumer generated JSON Web Token (JWT) SHALL consisting of three parts seperated by dots `.`, which are:
+The new national authentication service is not yet in place, so it is not currently possible to request an Access token from that service. In the interim, Consumer systems are expected to either use a local service to generate tokens, or generate a new JWT for each API request themselves. When a JWT is constructed in this way it is not actually being used for Authorisation, rather it is there for audit, and the API provider will have to trust the calling system to apply appropriate Authorisation controls in their system before generating the JWT.
+
+Note: When a client system generates a JWT, they should populate a URI for their system in the iss (issuer) claim in the token to identify the system that generated the token.
+
+A consumer generated JSON Web Token (JWT) SHALL consisting of three parts seperated by dots `.`, which are:
 
 - Header
 - Payload
@@ -68,9 +72,9 @@ The Payload section of the JWT shall be populated as follows:
 
 | Claim | Mandatory | Description | Fixed Value | Dynamic Value |
 |-------|----------|-------------|-------------|------------------|
-| iss | Y | Requesting systems issuer URI | No | Yes |
+| iss | Y | URI of the system that granted authorisation, and issued the access token | No | Yes |
 | sub | Y | ID for the user on whose behalf this request is being made. Will match either the `requesting_user`, `requesting_patient` (or `requesting_system` for unattended APIs) | No | Yes |
-| aud | Y | API endpoint URL | No | Yes |
+| aud | Y | API endpoint URL for the resource server the client is authorised to access | No | Yes |
 | exp | Y | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds |
 | iat | Y | The UTC time the JWT was created by the requesting system | No | now UTC time in seconds |
 | reason_for_request | Y | Purpose for which access is being requested | `directcare`, `secondaryuses` or `patientaccess` | No |
@@ -134,8 +138,75 @@ Common attributes are as defined in [rfc7519](https://tools.ietf.org/html/rfc751
 | requesting_patient | If this authorisation relates to a citizen, this attribute will hold the NHS Number of the citizen<br/>The naming system prefix for the NHS Number will be **http://fhir.nhs.net/Id/nhs-number**<br/>This is likely to be mandatory for APIs used by patienrs/citizens - the specific API documentation for each API will clarify whether this must be used. |
 
 
-
 {% include important.html content="In topologies where Consumer applications are provisioned via a portal or middleware hosted by another organisation (see [Topologies](ssp_system_topologies.html)), it is important for audit purposes that the user and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
+
+## JWT Validation ##
+
+Depending upon the client’s role, and the specific nature of the API being called, the validation that is applied to the JWT varies. Some validation is common to all JWTs however, and is outlined below. For API-specific validation, please refer to the relevant API specification.
+
+Where there has been a validation failure then the following response will be returned to the client. In all instances the response will be the same however the diagnostics text will vary depending upon the nature of the error. 
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|structure|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|See scenarios below for examples|
+
+### MISSING_OR_INVALID_HEADER Exception Scenarios: ###
+
+Example 1: JWT missing – the Authorization header has not been supplied. The following response SHALL be returned to the client.
+
+<i> Diagnostics - The Authorisation header must be supplied <i/>
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The Authorisation header must be supplied|
+
+Diagnostics - The Authorisation header must be supplied-->
+
+
+Example 2: JWT structure invalid – the Authorization header is present however the value is not a structurally valid JWT ie one or more of the required elements of header, payload and signature is missing. 
+
+<i> Diagnostics - The JWT associated with the Authorisation header must have the 3 sections <i/>
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The JWT associated with the Authorisation header must have the 3 sections|
+
+Diagnostics - The JWT associated with the Authorisation header must have the 3 sections -->
+
+
+Example 3: Mandatory claim missing – the Authorization header is present and the JWT is structurally valid however one or more of the mandatory claims is missing from the JWT 
+
+<i> Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing <i/>
+
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The mandatory claim [claim] from the JWT associated with the Authorisation header is missing|
+
+Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing -->
+
+Example 4: Claim’s value is invalid - the Authorization header is present and the JWT is structurally valid a mandatory claim is present in the JWT however it’s value is not valid. The table below shows the various checking that is applied to each claim in the JWT and the associated diagnostics message:
+
+
+| Claim being validated | Error scenario | Diagnostics | 
+|-------|----------|-------------|
+| sub | No requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_system claim| requesting_system ([requesting_system]) and sub ([sub]) claim’s values must match| 
+| sub | requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_user claim | requesting_user ([requesting_user]) and sub ([sub]) claim’s values must match|
+| scope | scope provided is not recognised (see [Security Scopes](security_scopes.html)). Specific APIs will require specific scopes - refer to the specific API specification for details of expected scopes.| Required scopes not found in token ([scope])
+| requesting_system | Requesting system is not of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID] | requesting_system ([requesting_system]) must be of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID]] |
+| requesting_system | Requesting system is not an ASID that is known to Spine | The ASID defined in the requesting_system ([ASID]) is unknown |
+| requesting_system | Requesting system ASID in JWT does not match FromASID | The ASID defined in the requesting_system ([ASID]) does not match the FromASID in the request |
+| requesting_organisation  | Requesting organisation is not of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] | requesting_organisation ([requesting_ organisation]) must be of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] |
+| requesting_organisation  | Requesting organisation is not known to Spine | The ODS code defined in the requesting_organisation([ODS]) is unknown |
+| requesting_organisation  | Requesting organisation is not associated with the ASID from the requesting_system claim  | requesting_system ASID ([ASID]) is not associated with the requesting_organisation ODS code ([ODS]) |
+
+### Precedence of requesting_user over requesting_system ###
+
+If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
+
 
 ## Example JWT for an authorised professional ##
 
