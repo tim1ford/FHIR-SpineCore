@@ -49,7 +49,7 @@ Newer APIs have adopted FHIR, and a new naming strategy has been defined for the
 Service names will remain in the same format - e.g.:
 
 - Visitors and Migrants: ```urn:nhs:names:services:visitorsandmigrants```
-- Reasonable Adjustment Flagging: ```urn:nhs:names:services:flagserver```
+- Reasonable Adjustment Flagging: ```urn:nhs:names:services:raflagserver```
 - Subscriptions: ```urn:nhs:names:services:subscriptions```
 
 However, the interaction IDs will be based around FHIR resources, and will take a similar form to the structure of SMART on FHIR scopes (see [security scopes](security_scopes.html)). The structure will be:
@@ -73,10 +73,10 @@ Examples of the above Interaction ID grammar are:
 - Visitors and Migrants:
   - ```urn:nhs:names:services:visitorsandmigrants:Observation.read:1``` - Read V&M Observation Resources
 - Reasonable Adjustment Flagging:
-  - ```urn:nhs:names:services:flagserver:Consent.read:1``` - Read/Search Flagging Consent Resources
-  - ```urn:nhs:names:services:flagserver:Consent.write:1``` - Update/Delete Flagging Consent Resources
-  - ```urn:nhs:names:services:flagserver:Flag.read:1``` - Read/Search Flagging Flag Resources
-  - ```urn:nhs:names:services:flagserver:Flag.write:1``` - Update/Delete Flagging Flag Resources
+  - ```urn:nhs:names:services:raflagserver:Consent.read:1``` - Read/Search Flagging Consent Resources
+  - ```urn:nhs:names:services:raflagserver:Consent.write:1``` - Update/Delete Flagging Consent Resources
+  - ```urn:nhs:names:services:raflagserver:Flag.read:1``` - Read/Search Flagging Flag Resources
+  - ```urn:nhs:names:services:raflagserver:Flag.write:1``` - Update/Delete Flagging Flag Resources
 
 Please refer to the relevant API spec for the specific interaction IDs to use for each Spine service.
 
