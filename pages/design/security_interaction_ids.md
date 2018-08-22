@@ -49,7 +49,7 @@ Newer APIs have adopted FHIR, and a new naming strategy has been defined for the
 Service names will remain in the same format - e.g.:
 
 - Visitors and Migrants: ```urn:nhs:names:services:visitorsandmigrants```
-- Reasonable Adjustment Flagging: ```urn:nhs:names:services:raflagserver```
+- Reasonable Adjustment Flagging: ```urn:nhs:names:services:raflags```
 - Subscriptions: ```urn:nhs:names:services:subscriptions```
 
 However, the interaction IDs will be based around FHIR resources, and will take a similar form to the structure of SMART on FHIR scopes (see [security scopes](security_scopes.html)). The structure will be:
@@ -61,7 +61,7 @@ However, the interaction IDs will be based around FHIR resources, and will take 
 ![Interaction ID Grammar](images/design/interactionID.png)
 
 - ```fhir-resource``` is the name of a standard FHIR resource as defined in the [HL7 FHIR specification](https://www.hl7.org/fhir/resourcelist.html)
-- ```extended-operation-name``` is used to identify a custom FHIR extended operation name (see [FHIR Extended Operations](https://www.hl7.org/fhir/operations.html))
+- ```extended-operation-name``` is used to identify a custom FHIR extended operation name (see [FHIR Extended Operations](https://www.hl7.org/fhir/operations.html)). Note: this is just the name of the operation, and does not include the $ prefix.
 - ```read``` is used to identify that the operation **does not** alter the state of any resources (usually a READ or SEARCH operation)
 - ```write``` is used to identify that the operation **does** alter the state of one or more resources (usually a CREATE, UPDATE or DELETE operation)
 - ```major-version``` is used to identify the major version number for the service. This allows the Spine to continue supporting clients using previous versions of an API for a period of time when a new major version is released.
@@ -73,10 +73,11 @@ Examples of the above Interaction ID grammar are:
 - Visitors and Migrants:
   - ```urn:nhs:names:services:visitorsandmigrants:Observation.read:1``` - Read V&M Observation Resources
 - Reasonable Adjustment Flagging:
-  - ```urn:nhs:names:services:raflagserver:Consent.read:1``` - Read/Search Flagging Consent Resources
-  - ```urn:nhs:names:services:raflagserver:Consent.write:1``` - Update/Delete Flagging Consent Resources
-  - ```urn:nhs:names:services:raflagserver:Flag.read:1``` - Read/Search Flagging Flag Resources
-  - ```urn:nhs:names:services:raflagserver:Flag.write:1``` - Update/Delete Flagging Flag Resources
+  - ```urn:nhs:names:services:raflags:Consent.read:1``` - Read/Search Flagging Consent Resources
+  - ```urn:nhs:names:services:raflags:Consent.write:1``` - Update/Delete Flagging Consent Resources
+  - ```urn:nhs:names:services:raflags:Flag.read:1``` - Read/Search Flagging Flag Resources
+  - ```urn:nhs:names:services:raflags:Flag.write:1``` - Update/Delete Flagging Flag Resources
+  - ```urn:nhs:names:services:raflags:removeflag.write:1``` - Extended operation for removing flags
 
 Please refer to the relevant API spec for the specific interaction IDs to use for each Spine service.
 
