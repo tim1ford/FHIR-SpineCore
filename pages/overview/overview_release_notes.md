@@ -18,6 +18,7 @@ Note - versions of this specification follow semantic versioning - minor and pat
 - Reorganised left nav slightly to make it a bit easier to navigate
 - Minor changes to [error handling](resources_error_handling.html) page to clarify issue severity
 - Minor changes to [JWT](security_jwt.html) page to clarify use of iss and aud claims, and to add JWT validation rules
+- Added a page in the legacy section with details of the [Gazetteer service](legacy_gazetteer.html)
 
 ## 1.0.1-live (3rd August 2018) ##
 

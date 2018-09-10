@@ -156,6 +156,9 @@ entries:
     - title: MiM Messaging
       url: /mim_messaging.html
       output: web
+    - title: Gazetteer
+      url: /legacy_gazetteer.html
+      output: web
 #    - title: Test Data
 #      url: /test_data.html
 #      output: web
