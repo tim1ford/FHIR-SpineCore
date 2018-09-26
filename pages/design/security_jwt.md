@@ -7,6 +7,8 @@ permalink: security_jwt.html
 summary: "Overview of how authorisation information is used and passed in APIs for audit and provenance."
 ---
 
+{% include important.html content="For instructions on constructing a JSON Web Token for **GP Connect** please see [Cross organisation audit and provenance](https://developer.nhs.uk/apis/gpconnect/integration_cross_organisation_audit_and_provenance.html) in the GP Connect specification." %}
+
 ## Use of Bearer Tokens ###
 
 An output of [authorising access](security_authorisation.html) to an API is the provision of a JSON Web Token. This MUST be passed in the API calls to ensure the systems being called are able to verify that the user has been authorised to see the resources requested. This JWT is also used for audit purposes, so the API implementation (and the SSP in the case of a call brokered through that service) can record the user context in it's audit trail.
