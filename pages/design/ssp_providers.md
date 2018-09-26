@@ -19,7 +19,7 @@ In order to ensure that endpoint lookup is reliable, the following guidelines mu
 
 ### 1. Format of Server Root URL
 
-The *Server Root URL* for a given ASID SHALL be defined in the nhsMhsEndPoint attribute of the MHS record (i.e. the ldap object of type nhsMhs). For GP Connect endpoints this URL SHALL be in the format described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect-1-2-0/development_general_api_guidance.html#service-root-url-versioning) guidance.
+The *Server Root URL* for a given ASID SHALL be defined in the nhsMhsEndPoint attribute of the MHS record (i.e. the ldap object of type nhsMhs). For GP Connect endpoints this URL SHALL be in the format described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect/development_general_api_guidance.html#service-root-url-versioning) guidance.
 
 
 ### 2. For First of Type interactions, CMA type endpoints only will be used
@@ -41,7 +41,7 @@ In line with this, provider systems SHOULD perform checks that the FHIR request 
 
 ### 4. Practice routing identifier to be included in FHIR Server Root URL
 
-For GP Connect APIs, as described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect-1-2-0/development_general_api_guidance.html#service-root-url-versioning) guidance, a routing identifier SHALL be placed in the FHIR Servder Root URL. This routing identifier may be the ODS code of the practice, or another logical identifier which acheives reliable routing of the request to the patient's registered practice data store. It is expected that the FHIR server business logic will extract the routing identifier.
+For GP Connect APIs, as described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect/development_general_api_guidance.html#service-root-url-versioning) guidance, a routing identifier SHALL be placed in the FHIR Servder Root URL. This routing identifier may be the ODS code of the practice, or another logical identifier which acheives reliable routing of the request to the patient's registered practice data store. It is expected that the FHIR server business logic will extract the routing identifier.
 
 In line with this, HTTP headers SHALL NOT be used to provide this organisation routing.
 
@@ -52,14 +52,14 @@ ODS codes which refer to Principle Clinical Systems as a single entity SHALL NOT
 
 ### 6. The FHIR Server Root URL SHALL contain the FHIR version name
 
-For GP Connect APIs, the FHIR Server Root URL defined in the nhsMhsEndPoint attribute SHALL contain the FHIR version name as described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect-1-2-0/development_general_api_guidance.html#service-root-url-versioning) guidance. This will enable versioning of provider API by FHIR version. 
+For GP Connect APIs, the FHIR Server Root URL defined in the nhsMhsEndPoint attribute SHALL contain the FHIR version name as described in the GP Connect [API Versioning](https://developer.nhs.uk/apis/gpconnect/development_general_api_guidance.html#service-root-url-versioning) guidance. This will enable versioning of provider API by FHIR version. 
 
 In line with this, provider systems SHALL NOT version through the use of HTTP headers.
 
 
 ### 7. FHIR version SHALL match version found in FHIR conformance statement
 
-The FHIR version as returned in a [CapabilityStatement](api_foundation_capabilitystatement.html) from the FHIR server which services the FHIR request SHALL match the FHIR version given in the FHIR Server Root URL. Details of how to retrieve this for GP Connect FHIR servers can be found at [GP Connect - Get the FHIR capability statement](https://developer.nhs.uk/apis/gpconnect-1-2-0/foundations_use_case_get_the_fhir_capability_statement.html)
+The FHIR version as returned in a [CapabilityStatement](api_foundation_capabilitystatement.html) from the FHIR server which services the FHIR request SHALL match the FHIR version given in the FHIR Server Root URL. Details of how to retrieve this for GP Connect FHIR servers can be found at [GP Connect - Get the FHIR capability statement](https://developer.nhs.uk/apis/gpconnect/foundations_use_case_get_the_fhir_capability_statement.html)
 
 ### 8. FHIR Server Root URLs associated with a given product set SHALL use same FHIR Version
 
