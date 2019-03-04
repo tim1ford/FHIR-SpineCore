@@ -20,7 +20,7 @@ In addition, each endpoint that is registered with the Spine has one or more "in
 ### Terminology ###
 
 | **MHS** | Message Handling Server. A middleware that handles messaging to/from Spine. |
-| **ASID** | Accredited System Identifer. A unique number allocated to a system on accreditation for connection to Spine. |
+| **ASID** | Accredited System Identifier. A unique number allocated to a system on accreditation for connection to Spine. |
 | **MHS Endpoint** | An endpoint registered with Spine for use with multiple systems via a MHS. Each system has its own ASID. |
 | **CMA Endpoint** | Combined MHS and Accredited System Endpoint. An endpoint registered with Spine for a single system. |
 
@@ -30,65 +30,93 @@ A consuming system will interact with SDS in order to resolve the FHIR Endpoint 
 
 This is a two step process, as follows:
 
-1. Lookup the Accredited System ID (ASID)
-2. Lookup the Message Handling System (MHS)
+1. Lookup the Message Handling System (MHS)
+2. Lookup the Accredited System ID (ASID)
+
 
 Once the MHS record has been retrieved the fully qualified domain name (FQDN) and full endpoint of the FHIR server can be retrieved from returned attributes of the MHS record.
 
-Systems SHOULD cache SDS query results giving details of consuming system, endpoints and endpoint capability on a per session basis.
+Systems **SHOULD** cache SDS query results giving details of consuming system, endpoints and endpoint capability on a per session basis.
 
-Consuming systems SHALL NOT cache and re-use consuming system, endpoint information derived from SDS across multiple patient encounters or practitioner usage sessions. Each new patient encounter will result in new lookups to ascertain the most up-to-date consuming system, endpoint and endpoint capability.
+Consuming systems **SHALL NOT** cache and re-use consuming system, endpoint information derived from SDS across multiple patient encounters or practitioner usage sessions. Each new patient encounter will result in new lookups to ascertain the most up-to-date consuming system, endpoint and endpoint capability.
 
 
-## Step 1a: Accredited System ID (ASID) Lookup for a National Spine Service ##
+## Step 1a: Message Handling System (MHS) Lookup for an external service (brokered via SSP)  ##
 
-When the client wants to make a call to a national Spine service (e.g. NRLS, Visitors and Migrants, etc), the first step is to establish the Party Key for the Spine (there is a single Party Key for each Spine environment. This is fixed for each environment, so does not need to be looked up on SDS - to find the Party Key for the Spine environment refer to the "Authority Service Names" document for the relevant Spine environment - see [Environments](test_environments.html) for details.
+Consumers **SHALL** lookup the endpoint URL, FQDN and Party Key from the MHS record, as follows:
 
-## Step 1b: Accredited System ID (ASID) Lookup for an external service (brokered via SSP) ###
-
-When the client wants to query an external service brokered through the Spine Security Proxy (e.g. a GP Connect API), the client SHALL use an organisation ODS code for the target organisation to lookup the Accredited System ID (ASID) as follows:
-
-- Accredited System type
-	- objectClass = `nhsAs`
+**Search criteria:**
 - Organisational code
-	- nhsIDCode = *[odsCode]* of the target organisation (e.g. GP practice).
-- Interaction ID
-	- nhsAsSvcIA = *[interactionId]* of the API operation required.
+	- `nhsIDCode` = *[odsCode]* of the target organisation (e.g. GP practice)
+- Message Handling System type
+	- `objectClass` = `nhsMHS`
+- MHS Interaction ID
+	- `nhsMhsSvcIA` = *[interactionId]* of the API operation required
+
+**Result attributes:**
+- Endpoint URL
+	- `nhsMhsEndPoint` 
+- Fully qualified domain name
+	- `nhsMHSFQDN` * 
+- Party Key
+	- `nhsMhsPartyKey`
+
+**ldapsearch query:**
 
 ```bash
-ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk –b "ou=services, o=nhs" 
-	"(&(nhsIDCode=[odsCode]) (objectClass=nhsAS)(nhsAsSvcIA=[interactionId]))" 
-	uniqueIdentifier nhsMhsPartyKey
+ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk -b "ou=services, o=nhs" 
+	"(&(nhsidcode=[odsCode]) (objectClass=nhsMhs) (nhsMhsSvcIA=[interactionId]))"
+	nhsMhsEndPoint, nhsMHSFQDN, nhsMhsPartyKey	
 ```
 
-The ASID will be returned in the uniqueIdentifier attribute which is returned from the ldaps query above.
-
-Note that ldaps is used to establish a TLS session rather than the StartTLS option. Also note that once the TLS session is established, SASL authentication is not used by SDS and is therefore disabled through the -x option.
+{% include note.html content="The FHIR endpoint URL of the message handling system can then be extracted from the `nhsMhsEndPoint` attribute of the MHS record. <br/><br/><b>*</b> The attribute `nhsMhsFQDN` can be used to retrieve the FQDN of the endpoint, though this can be extracted from the nhsMhsEndPoint." %}
 
 Please refer to the specification of the specific FHIR API you are using for details of the interaction ID to use:
 
 - [GP Connect operation guidance](https://developer.nhs.uk/apis/gpconnect/development_fhir_operation_guidance.html) for details of the GPConnect interactionId appropriate for your use case.
 
 
-## Step 2: Message Handling System (MHS) Lookup ##
 
-Clients SHALL lookup the endpoint URL from the MHS record using the Party Key retrieved in step 1, as follows:
+## Step 1b: Message Handling System (MHS) Lookup for a National Spine Service ##
 
-- Message Handling System type
-	- objectClass = `nhsMHS`
+When the client wants to make a call to a national Spine service (e.g. NRLS, Visitors and Migrants, etc), the first step is to establish the Party Key for the Spine (there is a single Party Key for each Spine environment. This is fixed for each environment, so does not need to be looked up on SDS (step 1a) - to find the Party Key for the Spine environment refer to the "Authority Service Names" document for the relevant Spine environment - see [Environments](test_environments.html) for details.
+
+
+## Step 2a: Accredited System ID (ASID) Lookup for an external service (brokered via SSP) ##
+
+When the client wants to query an external service brokered through the Spine Security Proxy (e.g. a GP Connect API), the client **SHALL** use an organisation ODS code for the target organisation and the nhsMHSPartyKey (identified in step 1) to lookup the Accredited System ID (ASID) as follows:
+
+**Search criteria:**
+- Organisational code
+	- `nhsIDCode` = *[odsCode]* of the target organisation (e.g. GP practice)
+- Accredited System type
+	- `objectClass` = `nhsAs`
 - MHS Party Key
-	- nhsMHSPartyKey = *[partyKey]* as retrieved from the nhsMhsPartyKey attribute in step 1
-- MHS Interaction ID
-	- nhsMhsSvcIA = *[interactionId]* of the API operation required(?)
+	- `nhsMHSPartyKey` = *[partyKey]* as retrieved from the `nhsMhsPartyKey` attribute in step 1a
+	
+**Result attributes:**
+- ASID
+	- `uniqueIdentifier`
 
-
+**ldapsearch query:**
+	
 ```bash
-ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk -b "ou=services, o=nhs" 
-	"(&(nhsMhsPartyKey=[partyKey]) (objectClass=nhsMhs) (nhsMhsSvcIA=[interactionId]))" 
-	nhsMhsEndPoint
+ldapsearch -x -H ldaps://ldap.vn03.national.ncrs.nhs.uk –b "ou=services, o=nhs" 
+	"(&(nhsidcode=[odsCode]) (objectclass=nhsAs) (nhsMHSPartyKey=[nhsMHSPartyKey]))"
+	uniqueIdentifier	
 ```
 
-The FHIR endpoint URL of the message handling system can then be extracted from the `nhsMhsEndPoint` attribute of the MHS record. The attribute nhsMhsFQDN could also be retrieved in the above query to retrieve the FQDN of the endpoint, though this can be extracted from the nhsMhsEndPoint.
+The ASID will be returned in the uniqueIdentifier attribute which is returned from the ldapsearch query above.
+
+{% include note.html content="Note that ldapsearch is used to establish a TLS session rather than the StartTLS option. Also note that once the TLS session is established, SASL authentication is not used by SDS and is therefore disabled through the -x option." %}
+
+
+## Step 2b: Accredited System ID (ASID) Lookup for a National Spine Service ##
+
+?????????? Ask Adam.
+
+
+
 
 ## ldapsearch configuration ##
 
